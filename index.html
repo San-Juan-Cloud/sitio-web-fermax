@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="es-AR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FERMAX — Cercos eléctricos y seguridad electrónica</title>
+<meta name="description" content="Cercos eléctricos, cámaras, alarmas y seguridad electrónica en Cuyo, Rosario y norte de Buenos Aires. 15 años de experiencia, +500 instalaciones.">
+<link rel="icon" type="image/svg+xml" href="assets/logo-fermax.svg">
+
+<!--
+  ============================================================================
+  FERMAX — sitio de una sola página (landing)
+  ============================================================================
+  Estructura de archivos:
+    index.html   -> toda la maquetación y los textos fijos (títulos, párrafos)
+    styles.css   -> todos los estilos (colores, tipografías, layout)
+    main.js      -> comportamiento (menú mobile, acordeón, lightbox de obras,
+                    formulario de contacto) y los DATOS de "Proyectos ejecutados"
+                    (main.js, arriba de todo, array OBRAS)
+
+  Para editar textos de secciones simples (Hero, Servicios, Nosotros, etc.)
+  basta con tocar el HTML de abajo. Para editar los proyectos de la sección
+  "Obras" (nombre, fotos, historia, specs) hay que ir a main.js -> array OBRAS,
+  porque esa sección arma las tarjetas y el lightbox por código.
+
+  Buscar "TODO EDITAR" te lleva directo a los datos de contacto (teléfono,
+  WhatsApp, email, redes) que hoy son de ejemplo.
+  ============================================================================
+-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
+<link href="https://fonts.cdnfonts.com/css/sansation" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ==========================================================================
+     HEADER — logo + menú de navegación + botón WhatsApp
+     ========================================================================== -->
+<header class="header" id="header">
+  <div class="container header__inner">
+    <a href="#inicio" class="brand">
+      <img src="assets/logo-fermax.svg" alt="" class="brand__icon">
+      <span class="brand__text">FERMAX</span>
+    </a>
+
+    <nav class="nav" id="nav">
+      <a href="#inicio">Inicio</a>
+      <a href="#servicios">Servicios</a>
+      <a href="#obras">Obras</a>
+      <a href="#cobertura">Cobertura</a>
+      <a href="#nosotros">Nosotros</a>
+      <a href="#contacto">Contacto</a>
+    </nav>
+
+    <!-- TODO EDITAR: número de WhatsApp (formato: 549 + código de área sin 0 + número sin 15) -->
+    <a href="https://wa.me/5492646000000" target="_blank" rel="noopener noreferrer" class="btn btn--yellow header__cta">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Pedir presupuesto
+    </a>
+
+    <button class="header__burger" id="burgerBtn" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+
+  <!-- Menú mobile (se muestra/oculta con JS, ver main.js) -->
+  <div class="mobile-menu" id="mobileMenu">
+    <a href="#inicio">Inicio</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#obras">Obras</a>
+    <a href="#cobertura">Cobertura</a>
+    <a href="#nosotros">Nosotros</a>
+    <a href="#contacto">Contacto</a>
+    <a href="https://wa.me/5492646000000" target="_blank" rel="noopener noreferrer" class="btn btn--yellow mobile-menu__cta">
+      <svg class="icon" viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+      Pedir presupuesto
+    </a>
+  </div>
+</header>
+
+<main>
+
+<!-- ==========================================================================
+     HERO — imagen de fondo + título + CTA + tira de estadísticas
+     ========================================================================== -->
+<section id="inicio" class="hero">
+  <div class="hero__bg">
+    <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1920&h=1080&fit=crop&auto=format" alt="">
+    <div class="hero__overlay"></div>
+  </div>
+
+  <div class="container hero__content">
+    <div class="hero__text">
+      <h1>
+        Cercos eléctricos y<br>
+        <span class="text-yellow">seguridad electrónica.</span><br>
+        Sabemos lo que hacemos.
+      </h1>
+      <p>
+        Tu propiedad protegida en Cuyo, Rosario y norte de Buenos Aires — con 15 años
+        de experiencia y más de 500 instalaciones ejecutadas.
+      </p>
+      <div class="hero__actions">
+        <a href="https://wa.me/5492646000000" target="_blank" rel="noopener noreferrer" class="btn btn--yellow btn--lg">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedí tu presupuesto por WhatsApp
+        </a>
+        <a href="#servicios" class="btn btn--outline btn--lg">Ver servicios</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tira de estadísticas -->
+  <div class="hero__stats">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stats-grid__item"><span class="stats-grid__value">15 años</span><span class="stats-grid__label">en el rubro</span></div>
+        <div class="stats-grid__item"><span class="stats-grid__value">+500</span><span class="stats-grid__label">instalaciones realizadas</span></div>
+        <div class="stats-grid__item"><span class="stats-grid__value">Homologados</span><span class="stats-grid__label">sistemas certificados</span></div>
+        <div class="stats-grid__item"><span class="stats-grid__value">8 a 22 hs</span><span class="stats-grid__label">todos los días</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     SERVICIOS — acordeón (se abre/cierra con JS, ver main.js)
+     ========================================================================== -->
+<section id="servicios" class="section section--white services">
+  <div class="container">
+    <div class="section__head">
+      <h2>Todo lo que necesitás para <span class="text-yellow">proteger tu perímetro</span></h2>
+    </div>
+
+    <div class="accordion" id="accordion">
+
+      <div class="accordion__item is-open">
+        <button class="accordion__trigger" type="button">
+          <span class="accordion__left"><span class="accordion__num">01</span><span class="accordion__title">Cercos eléctricos perimetrales</span></span>
+          <span class="accordion__icon"></span>
+        </button>
+        <div class="accordion__panel">
+          <div class="accordion__panel-inner">
+            <div class="accordion__text">
+              <p>Instalación y mantenimiento de cercos energizados de alta tensión. Sistemas de múltiples hilos adaptados a cualquier perímetro, con alarma integrada y señalética reglamentaria. Trabajamos con energizadores Nemik, DSC y Harvest.</p>
+              <a href="#contacto" class="link-arrow">Pedir presupuesto <span class="link-arrow__icon">→</span></a>
+            </div>
+            <div class="accordion__photo"><img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=900&h=500&fit=crop&auto=format" alt="Cercos eléctricos perimetrales"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button">
+          <span class="accordion__left"><span class="accordion__num">02</span><span class="accordion__title">Cámaras de seguridad y CCTV</span></span>
+          <span class="accordion__icon"></span>
+        </button>
+        <div class="accordion__panel">
+          <div class="accordion__panel-inner">
+            <div class="accordion__text">
+              <p>Cámaras analógicas e IP (Hikvision, Dahua, Epcom) de alta resolución. Grabación 24/7, acceso remoto desde cualquier dispositivo y almacenamiento local o en la nube. Incluye cámaras con inteligencia artificial para detección de intrusos y reconocimiento de matrículas.</p>
+              <a href="#contacto" class="link-arrow">Pedir presupuesto <span class="link-arrow__icon">→</span></a>
+            </div>
+            <div class="accordion__photo"><img src="https://images.unsplash.com/photo-1582139329536-e7284fece509?w=900&h=500&fit=crop&auto=format" alt="Cámaras de seguridad y CCTV"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button">
+          <span class="accordion__left"><span class="accordion__num">03</span><span class="accordion__title">Sensores y detectores</span></span>
+          <span class="accordion__icon"></span>
+        </button>
+        <div class="accordion__panel">
+          <div class="accordion__panel-inner">
+            <div class="accordion__text">
+              <p>Magnéticos, infrarrojos, de vibración, humo, gas y temperatura. Compatibles con paneles DSC, Paradox y Risco. Integración nativa con los sistemas de alarma que ya tenés instalados.</p>
+              <a href="#contacto" class="link-arrow">Pedir presupuesto <span class="link-arrow__icon">→</span></a>
+            </div>
+            <div class="accordion__photo"><img src="https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=900&h=500&fit=crop&auto=format" alt="Sensores y detectores"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button">
+          <span class="accordion__left"><span class="accordion__num">04</span><span class="accordion__title">Sistemas contra incendios</span></span>
+          <span class="accordion__icon"></span>
+        </button>
+        <div class="accordion__panel">
+          <div class="accordion__panel-inner">
+            <div class="accordion__text">
+              <p>Detección temprana, paneles de control, rociadores y automatización de evacuación. Homologación ante Bomberos y organismos de control. Cumplimiento de NFPA 72 y normativa provincial.</p>
+              <a href="#contacto" class="link-arrow">Pedir presupuesto <span class="link-arrow__icon">→</span></a>
+            </div>
+            <div class="accordion__photo"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=500&fit=crop&auto=format" alt="Sistemas contra incendios"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button">
+          <span class="accordion__left"><span class="accordion__num">05</span><span class="accordion__title">Automatización de portones y accesos</span></span>
+          <span class="accordion__icon"></span>
+        </button>
+        <div class="accordion__panel">
+          <div class="accordion__panel-inner">
+            <div class="accordion__text">
+              <p>Motores electromecánicos de alta durabilidad, control remoto, lectores de tarjetas RFID y videoporteros integrados para acceso vehicular y peatonal. Compatible con todas las marcas del mercado.</p>
+              <a href="#contacto" class="link-arrow">Pedir presupuesto <span class="link-arrow__icon">→</span></a>
+            </div>
+            <div class="accordion__photo"><img src="https://images.unsplash.com/photo-1486325212027-8081e485255e?w=900&h=500&fit=crop&auto=format" alt="Automatización de portones y accesos"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button">
+          <span class="accordion__left"><span class="accordion__num">06</span><span class="accordion__title">Alarma comunitaria y vecinal</span></span>
+          <span class="accordion__icon"></span>
+        </button>
+        <div class="accordion__panel">
+          <div class="accordion__panel-inner">
+            <div class="accordion__text">
+              <p>Redes de alarma vecinal interconectadas con sirenas, comunicadores GSM y monitoreo centralizado por barrio o manzana. Solución escalable para countries, barrios privados y asociaciones de vecinos.</p>
+              <a href="#contacto" class="link-arrow">Pedir presupuesto <span class="link-arrow__icon">→</span></a>
+            </div>
+            <div class="accordion__photo"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&h=500&fit=crop&auto=format" alt="Alarma comunitaria y vecinal"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button">
+          <span class="accordion__left"><span class="accordion__num">07</span><span class="accordion__title">Pinches y barreras físicas</span></span>
+          <span class="accordion__icon"></span>
+        </button>
+        <div class="accordion__panel">
+          <div class="accordion__panel-inner">
+            <div class="accordion__text">
+              <p>Púas metálicas galvanizadas, mallas anti-escalamiento y barreras físicas disuasivas. Complementan y refuerzan el cerco eléctrico en los puntos más vulnerables del perímetro.</p>
+              <a href="#contacto" class="link-arrow">Pedir presupuesto <span class="link-arrow__icon">→</span></a>
+            </div>
+            <div class="accordion__photo"><img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=900&h=500&fit=crop&auto=format" alt="Pinches y barreras físicas"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button">
+          <span class="accordion__left"><span class="accordion__num">08</span><span class="accordion__title">Instalaciones eléctricas</span></span>
+          <span class="accordion__icon"></span>
+        </button>
+        <div class="accordion__panel">
+          <div class="accordion__panel-inner">
+            <div class="accordion__text">
+              <p>Electricidad de obra y comercial: tableros seccionales, cableado estructurado, iluminación de emergencia y mantenimiento preventivo programado. Habilitados por el Colegio de Técnicos de San Juan.</p>
+              <a href="#contacto" class="link-arrow">Pedir presupuesto <span class="link-arrow__icon">→</span></a>
+            </div>
+            <div class="accordion__photo"><img src="https://images.unsplash.com/photo-1558002038-1055907df827?w=900&h=500&fit=crop&auto=format" alt="Instalaciones eléctricas"></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     CLIENTES — cinta de logos/nombres en movimiento continuo (marquee)
+     ========================================================================== -->
+<section class="clients">
+  <p class="clients__label">Empresas que confían en nosotros</p>
+  <div class="clients__viewport">
+    <div class="clients__track" id="clientsTrack">
+      <!-- El contenido se duplica una vez para que el loop sea continuo (ver abajo, mismos nombres repetidos) -->
+      <span class="clients__item" style="--c:#c00">Pulmho Truck</span><span class="clients__dot"></span>
+      <span class="clients__item" style="--c:#1a5c9e">Fenicia Neumáticos</span><span class="clients__dot"></span>
+      <span class="clients__item" style="--c:#007b5e">Swiss Medical</span><span class="clients__dot"></span>
+      <span class="clients__item" style="--c:#5a2d82">Auditorio Juan Victoria</span><span class="clients__dot"></span>
+      <span class="clients__item" style="--c:#e07b00">Energy 360</span><span class="clients__dot"></span>
+      <span class="clients__item" style="--c:#e30613">Prosegur</span><span class="clients__dot"></span>
+      <!-- duplicado -->
+      <span class="clients__item" style="--c:#c00">Pulmho Truck</span><span class="clients__dot"></span>
+      <span class="clients__item" style="--c:#1a5c9e">Fenicia Neumáticos</span><span class="clients__dot"></span>
+      <span class="clients__item" style="--c:#007b5e">Swiss Medical</span><span class="clients__dot"></span>
+      <span class="clients__item" style="--c:#5a2d82">Auditorio Juan Victoria</span><span class="clients__dot"></span>
+      <span class="clients__item" style="--c:#e07b00">Energy 360</span><span class="clients__dot"></span>
+      <span class="clients__item" style="--c:#e30613">Prosegur</span><span class="clients__dot"></span>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     OBRAS — grilla de proyectos + lightbox con detalle
+     Las tarjetas y el contenido del lightbox se generan desde JS
+     (ver main.js, array OBRAS) para no repetir datos en dos lugares.
+     ========================================================================== -->
+<section id="obras" class="section section--black obras">
+  <div class="container">
+    <div class="section__head">
+      <h2>Proyectos <span class="text-yellow">ejecutados</span></h2>
+      <p class="section__sub">Más de 500 instalaciones. Seis obras representativas.</p>
+    </div>
+    <div class="obras__grid" id="obrasGrid"><!-- generado por main.js --></div>
+  </div>
+
+  <!-- Lightbox (oculto por defecto, se activa con JS) -->
+  <div class="lightbox" id="lightbox" hidden>
+    <div class="lightbox__panel">
+      <button class="lightbox__close" id="lightboxClose" aria-label="Cerrar">✕</button>
+      <div class="lightbox__grid">
+        <div class="lightbox__media">
+          <div class="lightbox__photo-wrap">
+            <img id="lightboxPhoto" src="" alt="">
+            <button class="lightbox__nav lightbox__nav--prev" id="lightboxPrevPhoto" aria-label="Foto anterior">‹</button>
+            <button class="lightbox__nav lightbox__nav--next" id="lightboxNextPhoto" aria-label="Foto siguiente">›</button>
+          </div>
+          <p class="lightbox__caption" id="lightboxCaption"></p>
+          <div class="lightbox__thumbs" id="lightboxThumbs"></div>
+        </div>
+        <div class="lightbox__details">
+          <div>
+            <p class="lightbox__type" id="lightboxType"></p>
+            <h3 id="lightboxName"></h3>
+          </div>
+          <p class="lightbox__story" id="lightboxStory"></p>
+          <div class="lightbox__meters-block">
+            <p class="lightbox__meters-label">Metros de perímetro</p>
+            <p class="lightbox__meters" id="lightboxMeters"></p>
+          </div>
+          <div class="lightbox__specs" id="lightboxSpecs"></div>
+        </div>
+      </div>
+      <div class="lightbox__footer">
+        <span id="lightboxCounter"></span>
+        <div class="lightbox__footer-actions">
+          <button class="btn btn--dark-alt" id="lightboxPrevProject">Anterior</button>
+          <button class="btn btn--yellow" id="lightboxNextProject">Siguiente obra</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     NOSOTROS — historia + diferenciales
+     ========================================================================== -->
+<section id="nosotros" class="section section--white nosotros">
+  <div class="container">
+    <div class="section__head">
+      <h2>Una empresa que <span class="text-yellow">respalda cada instalación</span></h2>
+    </div>
+    <div class="nosotros__grid">
+      <div class="nosotros__col">
+        <div class="nosotros__photo">
+          <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=500&fit=crop&auto=format" alt="Equipo FERMAX">
+          <div class="nosotros__photo-overlay">
+            <div class="nosotros__stat"><span>+500</span><small>instalaciones realizadas</small></div>
+            <div class="nosotros__divider"></div>
+            <div class="nosotros__stat"><span>15 años</span><small>en el mercado</small></div>
+          </div>
+        </div>
+        <p>FERMAX nació en San Juan con la convicción de que la seguridad electrónica de calidad no debía ser exclusiva de grandes corporaciones. Hoy, más de una década después, protegemos hogares, industrias y espacios públicos en todo Cuyo y más allá.</p>
+        <p>Cada instalación lleva la firma de técnicos certificados que trabajan con las mejores marcas del mercado y respetan la normativa vigente. Sin atajos, sin materiales de segunda.</p>
+      </div>
+      <div class="nosotros__col nosotros__diffs">
+        <div class="diff-card">
+          <span class="diff-card__check">✓</span>
+          <div><p class="diff-card__title">Personal técnico certificado</p><p class="diff-card__desc">Formación continua con los fabricantes. Cada técnico es habilitado por el Colegio de Técnicos de San Juan y capacitado por las marcas que instala.</p></div>
+        </div>
+        <div class="diff-card">
+          <span class="diff-card__check">✓</span>
+          <div><p class="diff-card__title">Sistemas homologados</p><p class="diff-card__desc">Solo equipos certificados. Cumplimos con las normativas vigentes en cada jurisdicción, incluyendo homologación ante Bomberos y organismos de control.</p></div>
+        </div>
+        <div class="diff-card">
+          <span class="diff-card__check">✓</span>
+          <div><p class="diff-card__title">Sin ataduras de marca</p><p class="diff-card__desc">Trabajamos con Hikvision, Dahua, DSC, Bosch, Nemik, Harvest y más. Recomendamos lo que conviene para cada proyecto y presupuesto, no lo que más margen nos deja.</p></div>
+        </div>
+        <div class="diff-card">
+          <span class="diff-card__check">✓</span>
+          <div><p class="diff-card__title">Garantía real sobre lo instalado</p><p class="diff-card__desc">Garantía por materiales y mano de obra. Contratos de mantenimiento preventivo disponibles. Seguimos siendo localizables después de la obra.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     COBERTURA — mapa + zonas (hover resalta zona, ver main.js)
+     ========================================================================== -->
+<section id="cobertura" class="section section--gray cobertura">
+  <div class="container">
+    <div class="section__head">
+      <h2>Dónde <span class="text-yellow">operamos</span></h2>
+    </div>
+    <div class="cobertura__grid">
+      <div class="cobertura__map">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 412 760" width="340" role="img" aria-label="Mapa de cobertura Argentina">
+          <defs>
+            <radialGradient id="halo">
+              <stop offset="0%" stop-color="#f5b21a" stop-opacity=".45"/>
+              <stop offset="60%" stop-color="#f5b21a" stop-opacity=".14"/>
+              <stop offset="100%" stop-color="#f5b21a" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+          <g>
+            <path d="M 146.1 18.2 L 164.5 20.0 L 182.9 16.4 L 201.3 20.0 L 223.1 34.5 L 239.8 52.7 L 256.5 63.7 L 269.9 69.2 L 278.3 76.6 L 275.8 93.3 L 269.9 106.4 L 263.2 113.9 L 279.9 115.8 L 298.3 117.7 L 308.4 115.8 L 320.1 100.8 L 330.1 82.2 L 346.0 94.3 L 341.8 108.3 L 321.7 116.8 L 306.7 129.0 L 288.3 159.6 L 273.2 184.8 L 269.9 214.3 L 266.6 242.3 L 264.9 254.4 L 281.6 264.6 L 295.0 293.5 L 290.0 312.3 L 281.6 327.0 L 243.1 339.8 L 203.0 346.3 L 199.7 374.5 L 199.7 387.7 L 157.8 385.5 L 156.2 394.3 L 169.5 414.4 L 179.6 423.5 L 162.9 428.0 L 154.5 444.0 L 151.1 471.8 L 131.1 486.0 L 114.4 505.1 L 124.4 522.0 L 141.1 551.6 L 124.4 571.6 L 111.0 589.5 L 97.6 610.1 L 87.6 641.8 L 99.3 670.2 L 80.9 664.8 L 62.5 660.7 L 39.1 647.2 L 29.1 620.6 L 14.0 594.6 L 19.0 571.6 L 30.7 556.5 L 34.1 531.8 L 40.8 507.5 L 44.1 483.6 L 44.1 460.2 L 47.5 437.1 L 47.5 414.4 L 49.1 392.1 L 50.8 370.1 L 52.5 348.4 L 55.8 327.0 L 60.8 306.0 L 65.8 285.2 L 75.9 254.4 L 72.5 224.3 L 70.9 220.3 L 75.9 184.8 L 65.8 165.4 L 75.9 146.2 L 80.9 127.2 L 97.6 110.2 L 101.0 89.6 L 99.3 71.1 L 117.7 52.7 L 122.7 34.5 L 124.4 25.4 L 136.1 16.4 Z" fill="#dedede" stroke="#c2c2c2" stroke-width="1" stroke-linejoin="round"/>
+            <path d="M 96.0 678.5 L 101.0 679.9 L 103.5 693.8 L 111.0 710.1 L 119.4 719.1 L 127.7 726.3 L 143.6 737.8 L 131.1 742.8 L 112.7 742.2 L 100.1 741.3 L 96.0 733.5 Z" fill="#dedede" stroke="#c2c2c2" stroke-width="1" stroke-linejoin="round"/>
+          </g>
+          <circle class="zone-halo" data-zone="cuyo" cx="107" cy="216" r="64" fill="url(#halo)"/>
+          <circle class="zone-halo" data-zone="rosario" cx="229" cy="223" r="42" fill="url(#halo)"/>
+          <circle class="zone-halo" data-zone="bsas" cx="265" cy="254" r="42" fill="url(#halo)"/>
+          <g class="zone-points" data-zone="cuyo" fill="#f5b21a" stroke="#1a1a1a" stroke-width="1.4">
+            <circle cx="97.0" cy="195.4" r="6"/><circle cx="91.9" cy="222.1" r="5"/><circle cx="133.8" cy="230.3" r="5"/>
+          </g>
+          <circle class="zone-points" data-zone="rosario" cx="229.1" cy="223.3" r="5.5" fill="#f5b21a" stroke="#1a1a1a" stroke-width="1.4"/>
+          <circle class="zone-points" data-zone="bsas" cx="264.9" cy="254.4" r="5.5" fill="#f5b21a" stroke="#1a1a1a" stroke-width="1.4"/>
+          <g font-family="system-ui,-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif" font-size="13" font-weight="700" fill="#1a1a1a">
+            <line class="zone-label" data-zone="cuyo" x1="88" y1="188" x2="52" y2="170" stroke="#9a9a9a" stroke-width="1"/>
+            <text class="zone-label" data-zone="cuyo" x="48" y="166" text-anchor="end">Cuyo</text>
+            <line class="zone-label" data-zone="rosario" x1="236" y1="217" x2="284" y2="196" stroke="#9a9a9a" stroke-width="1"/>
+            <text class="zone-label" data-zone="rosario" x="288" y="192">Rosario</text>
+            <line class="zone-label" data-zone="bsas" x1="272" y1="259" x2="300" y2="286" stroke="#9a9a9a" stroke-width="1"/>
+            <text class="zone-label" data-zone="bsas" x="304" y="290">Bs. As. Norte</text>
+          </g>
+        </svg>
+      </div>
+      <div class="cobertura__zones">
+        <div class="zone-card" data-zone="cuyo">
+          <span class="zone-card__title">Zona Cuyo</span>
+          <span class="zone-card__presence">Base operativa</span>
+          <span class="zone-card__note">Equipo completo y stock de materiales en San Juan.</span>
+        </div>
+        <div class="zone-card" data-zone="rosario">
+          <span class="zone-card__title">Rosario, Santa Fe</span>
+          <span class="zone-card__presence">Equipo destacado</span>
+          <span class="zone-card__note">Técnicos destacados para obras programadas.</span>
+        </div>
+        <div class="zone-card" data-zone="bsas">
+          <span class="zone-card__title">Norte de Buenos Aires</span>
+          <span class="zone-card__presence">Equipo destacado</span>
+          <span class="zone-card__note">Técnicos destacados para obras programadas.</span>
+        </div>
+        <div class="zone-card zone-card--dashed" data-zone="national">
+          <span class="zone-card__title">Y donde nos requieran</span>
+          <span class="zone-card__presence">Presupuesto con traslado incluido</span>
+          <span class="zone-card__note">El presupuesto incluye viáticos y logística.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     PROCESO — 3 pasos + bloque de mantenimiento
+     ========================================================================== -->
+<section class="section section--white proceso">
+  <div class="container">
+    <div class="section__head">
+      <h2>Desde el primer contacto <span class="text-yellow">hasta la instalación</span></h2>
+    </div>
+    <div class="proceso__steps">
+      <div class="proceso__step">
+        <span class="proceso__num">01</span>
+        <div class="proceso__rule"></div>
+        <h3>Contacto y relevamiento</h3>
+        <p>Respondemos el mismo día. Coordinamos una visita técnica sin cargo dentro de las 48 horas para evaluar el terreno y las necesidades.</p>
+      </div>
+      <div class="proceso__step">
+        <span class="proceso__num">02</span>
+        <div class="proceso__rule"></div>
+        <h3>Propuesta técnica</h3>
+        <p>Entregamos el presupuesto dentro de los 3 días hábiles. Detallamos materiales, plazos y opciones para que puedas decidir con información completa.</p>
+      </div>
+      <div class="proceso__step">
+        <span class="proceso__num">03</span>
+        <div class="proceso__rule"></div>
+        <h3>Instalación</h3>
+        <p>Ejecutamos la obra con criterio técnico, orden y limpieza. Capacitamos a los responsables y dejamos todo documentado antes de irnos.</p>
+      </div>
+    </div>
+    <div class="maint-banner">
+      <div>
+        <p class="maint-banner__title">Mantenimiento y soporte — servicio permanente</p>
+        <p class="maint-banner__desc">Contratos de mantenimiento preventivo y asistencia ante fallas. El sistema que instalamos seguimos siendo responsables de que funcione.</p>
+      </div>
+      <a href="#contacto" class="btn btn--yellow">Consultar plan</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     CTA FINAL
+     ========================================================================== -->
+<section class="cta-final">
+  <div class="cta-final__glow"></div>
+  <div class="container cta-final__content">
+    <h2>¿Necesitás cerrar<br><span class="text-yellow">tu perímetro?</span></h2>
+    <p class="cta-final__lead">Visita técnica sin cargo. Respuesta el mismo día.</p>
+    <p class="cta-final__sub">Atendemos de lunes a domingo de 8 a 22 hs — llamadas y WhatsApp.</p>
+    <div class="cta-final__actions">
+      <a href="https://wa.me/5492646000000" target="_blank" rel="noopener noreferrer" class="btn btn--yellow btn--lg">
+        <svg class="icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+        Pedí tu presupuesto por WhatsApp
+      </a>
+      <a href="#contacto" class="btn btn--outline btn--lg">Formulario de contacto</a>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
+     CONTACTO — formulario con validación básica (ver main.js)
+     ========================================================================== -->
+<section id="contacto" class="section section--gray contacto">
+  <div class="container">
+    <div class="section__head">
+      <h2>Pedí tu <span class="text-yellow">presupuesto</span></h2>
+      <p class="section__sub">Visita sin cargo. Respuesta dentro del mismo día hábil.</p>
+    </div>
+    <div class="contacto__grid">
+
+      <div class="contacto__form-wrap">
+        <form id="contactForm" novalidate>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-nombre">Nombre completo <span class="text-yellow">*</span></label>
+              <input type="text" id="f-nombre" name="nombre" placeholder="Tu nombre">
+              <p class="field__error" data-error-for="nombre"></p>
+            </div>
+            <div class="field">
+              <label for="f-telefono">Teléfono <span class="text-yellow">*</span></label>
+              <input type="tel" id="f-telefono" name="telefono" placeholder="264 400 0000">
+              <p class="field__error" data-error-for="telefono"></p>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="f-localidad">Localidad <span class="text-yellow">*</span></label>
+              <input type="text" id="f-localidad" name="localidad" placeholder="San Juan, Mendoza…">
+              <p class="field__error" data-error-for="localidad"></p>
+            </div>
+            <div class="field">
+              <label for="f-email">Email</label>
+              <input type="email" id="f-email" name="email" placeholder="tu@email.com">
+            </div>
+          </div>
+          <div class="field">
+            <label for="f-tipo">Tipo de servicio</label>
+            <select id="f-tipo" name="tipo">
+              <option value="">Seleccioná un servicio</option>
+              <option>Cerco eléctrico</option>
+              <option>Cámaras de seguridad</option>
+              <option>Alarma</option>
+              <option>Sistema contra incendios</option>
+              <option>Portón automático</option>
+              <option>Instalación eléctrica</option>
+              <option>Mantenimiento</option>
+              <option>Consulta general</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="f-mensaje">Mensaje</label>
+            <textarea id="f-mensaje" name="mensaje" rows="4" placeholder="Describí brevemente qué necesitás proteger"></textarea>
+          </div>
+          <button type="submit" class="btn btn--dark btn--lg" id="contactSubmit">Pedir presupuesto</button>
+        </form>
+
+        <!-- Mensaje de éxito, oculto hasta que se envía el formulario -->
+        <div class="form-success" id="formSuccess" hidden>
+          <div class="form-success__icon">✓</div>
+          <h3>Recibimos tu consulta</h3>
+          <p>Te respondemos dentro de las 24 horas hábiles. Si preferís una respuesta más rápida, escribinos por WhatsApp.</p>
+          <button type="button" class="link-reset" id="formReset">Enviar otra consulta</button>
+        </div>
+      </div>
+
+      <div class="contacto__side">
+        <div class="contact-card">
+          <p class="contact-card__title">Contacto directo</p>
+          <!-- TODO EDITAR: datos de contacto reales -->
+          <div class="contact-card__item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+            <div><p>+54 264 400-0000</p><small>Llamadas y WhatsApp</small></div>
+          </div>
+          <div class="contact-card__item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
+            <div><p>info@fermax.com.ar</p><small>Respondemos el mismo día</small></div>
+          </div>
+          <div class="contact-card__item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <div><p>San Juan, Argentina</p><small>Sede principal</small></div>
+          </div>
+          <div class="contact-card__item">
+            <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><circle cx="12" cy="12" r="10"/><polyline points="12,6 12,12 16,14"/></svg>
+            <div><p>08:00 a 22:00 hs</p><small>Lunes a domingo</small></div>
+          </div>
+        </div>
+        <a href="https://wa.me/5492646000000" target="_blank" rel="noopener noreferrer" class="btn btn--yellow btn--lg btn--block">
+          <svg class="icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+          Pedí tu presupuesto por WhatsApp
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+<footer class="footer">
+  <div class="container footer__inner">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="#inicio" class="brand brand--footer">
+          <img src="assets/logo-fermax.svg" alt="" class="brand__icon">
+          <span class="brand__text">FERMAX</span>
+        </a>
+        <p>Seguridad electrónica e instalaciones eléctricas en Cuyo, Rosario y norte de Buenos Aires. 15 años de trayectoria.</p>
+        <!-- TODO EDITAR: matrícula / habilitación / CUIT reales -->
+        <div class="footer__legal">
+          <p>Mat. instalador N.° 4821-SJ &nbsp;·&nbsp; Habilitación municipal N.° 00147</p>
+          <p>CUIT: 20-28540000-3</p>
+        </div>
+        <div class="footer__social">
+          <!-- TODO EDITAR: enlaces reales a redes sociales -->
+          <a href="#" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+          <a href="#" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+        </div>
+      </div>
+      <div class="footer__col">
+        <p class="footer__heading">Servicios</p>
+        <ul>
+          <li><a href="#servicios">Cercos eléctricos</a></li>
+          <li><a href="#servicios">Cámaras de seguridad</a></li>
+          <li><a href="#servicios">Cámaras con IA</a></li>
+          <li><a href="#servicios">Contra incendios</a></li>
+          <li><a href="#servicios">Portones automáticos</a></li>
+          <li><a href="#servicios">Instalaciones eléctricas</a></li>
+        </ul>
+      </div>
+      <div class="footer__col">
+        <p class="footer__heading">Empresa</p>
+        <ul>
+          <li><a href="#nosotros">Nosotros</a></li>
+          <li><a href="#obras">Proyectos</a></li>
+          <li><a href="#cobertura">Cobertura</a></li>
+          <li><a href="#contacto">Contacto</a></li>
+          <li><a href="#">Política de privacidad</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p>© 2026 FERMAX®. Todos los derechos reservados. San Juan, Argentina.</p>
+      <p>Cuyo · Rosario · Norte de Buenos Aires</p>
+    </div>
+    <!-- Crédito de desarrollo — pedido explícitamente por el cliente, no borrar sin consultar -->
+    <p class="footer__credit">Desarrollado por <a href="https://sanjuancloud.com.ar" target="_blank" rel="noopener noreferrer">San Juan Cloud</a></p>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+</body>
+</html>
