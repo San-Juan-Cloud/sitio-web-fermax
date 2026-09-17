@@ -16,22 +16,14 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ==========================================================================
      1) DATOS DE OBRAS — para agregar/quitar/editar un proyecto, tocar acá.
-     Cada obra necesita: name, location, type, meters, story, specs[], photos[]
+     Cada obra necesita: name, location, type, photos[]
+     Clientes reales; las fotos todavía son de ejemplo (Unsplash).
      ========================================================================== */
   const OBRAS = [
     {
-      name: "Energy 360",
-      location: "Ruta 40 esq. Saavedra Norte, San Juan",
+      name: "360 Energy",
+      location: "San Juan",
       type: "Planta industrial",
-      meters: 1480,
-      story: "La planta operaba con un cerco convencional de alambre que había sido cortado tres veces en doce meses. Las pérdidas por robo de cobre y equipos superaban los costos de una instalación completa. Se relevó el perímetro, se diseñó un sistema de 8 hilos a 10.000 V con zonas independientes y se integró al sistema de alarma existente. Desde la puesta en marcha, cero incidentes.",
-      specs: [
-        { label: "Hilos", value: "8 hilos a 10.000 V" },
-        { label: "Energizador", value: "Harvest 15J — doble fuente" },
-        { label: "Integración", value: "Panel DSC Power Series" },
-        { label: "Tiempo de obra", value: "12 días" },
-        { label: "Año", value: "2022" },
-      ],
       photos: [
         "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1200&h=750&fit=crop&auto=format",
         "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=750&fit=crop&auto=format",
@@ -40,17 +32,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Barrio Estilo Sur",
-      location: "Rivadavia, San Juan",
+      location: "San Juan",
       type: "Barrio privado",
-      meters: 2140,
-      story: "El barrio de 48 lotes no tenía ningún sistema de seguridad perimetral. Los vecinos venían padeciendo ingresos no autorizados por el sector de reserva verde. Se diseñó un cerco de alto voltaje con 12 zonas independientes, alarma comunitaria con sirenas internas y GSM, y un sistema de CCTV con 16 cámaras en los accesos. La administración monitorea todo desde un dashboard web.",
-      specs: [
-        { label: "Hilos", value: "10 hilos a 9.000 V" },
-        { label: "Energizador", value: "Nemik Pro 30J — redundante" },
-        { label: "Integración", value: "Alarma comunitaria + CCTV 16 cámaras" },
-        { label: "Tiempo de obra", value: "21 días" },
-        { label: "Año", value: "2023" },
-      ],
       photos: [
         "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&h=750&fit=crop&auto=format",
         "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=750&fit=crop&auto=format",
@@ -60,17 +43,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Pulmho Truck",
-      location: "Ruta Nacional 40, San Juan",
+      location: "San Juan",
       type: "Playa de camiones",
-      meters: 920,
-      story: "Con camiones de alto valor estacionados de noche, la playa era un blanco frecuente para el robo de combustible y accesorios. La superficie grande y sin iluminación hacía que las cámaras convencionales no alcanzaran. Se instaló cerco eléctrico en el perímetro completo, detectores de vibración en los portones y un sistema de cámaras con IA que diferencia personas de animales.",
-      specs: [
-        { label: "Hilos", value: "6 hilos a 8.000 V" },
-        { label: "Energizador", value: "DSC LE-15A" },
-        { label: "Integración", value: "IA — Hikvision DeepInMind" },
-        { label: "Tiempo de obra", value: "8 días" },
-        { label: "Año", value: "2023" },
-      ],
       photos: [
         "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1200&h=750&fit=crop&auto=format",
         "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1200&h=750&fit=crop&auto=format",
@@ -79,17 +53,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Swiss Medical",
-      location: "San Juan capital",
+      location: "San Juan",
       type: "Centro médico",
-      meters: 480,
-      story: "El perímetro del centro médico necesitaba seguridad efectiva sin afectar la imagen institucional ni interferir con las normas hospitalarias. Se diseñó un cerco de baja altura con 4 hilos y energizador de bajo pulso, señalética homologada y un sistema de acceso por tarjeta RFID para el personal. Toda la instalación fue coordinada con el área de facilities para no interrumpir la operación.",
-      specs: [
-        { label: "Hilos", value: "4 hilos a 6.000 V — pulso bajo" },
-        { label: "Energizador", value: "Harvest 5J — conforme norma" },
-        { label: "Integración", value: "Control de acceso RFID" },
-        { label: "Tiempo de obra", value: "5 días" },
-        { label: "Año", value: "2024" },
-      ],
       photos: [
         "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=750&fit=crop&auto=format",
         "https://images.unsplash.com/photo-1582139329536-e7284fece509?w=1200&h=750&fit=crop&auto=format",
@@ -98,17 +63,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Auditorio Juan Victoria",
-      location: "San Juan capital",
-      type: "Espacio público cultural",
-      meters: 640,
-      story: "El auditorio requería un sistema de seguridad que funcionara tanto en días de función como en los períodos sin actividad, y que se pudiera desactivar parcialmente para el ingreso de público. Se instaló un sistema contra incendios con detección por aspiración, automatización del telón cortafuegos y un cerco perimetral sectorizado que se inhabilita por zona desde la consola del portero.",
-      specs: [
-        { label: "Hilos", value: "6 hilos por sector — 4 sectores" },
-        { label: "Energizador", value: "Nemik Pro 10J — sectorial" },
-        { label: "Integración", value: "Contra incendios + automatización" },
-        { label: "Tiempo de obra", value: "18 días" },
-        { label: "Año", value: "2022" },
-      ],
+      location: "San Juan",
+      type: "Espacio cultural",
       photos: [
         "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=750&fit=crop&auto=format",
         "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=750&fit=crop&auto=format",
@@ -117,17 +73,8 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Fenicia Neumáticos",
-      location: "Av. Uñac y calle 6, San Juan",
+      location: "San Juan",
       type: "Comercio automotriz",
-      meters: 310,
-      story: "El local sufrió un ingreso nocturno por el lateral trasero que colinda con un baldío. La solución fue un cerco de 6 hilos en el perímetro trasero y lateral, integrado con la alarma existente y con una cámara en la esquina más comprometida. El sistema se activa automáticamente al cierre del local y envía una alerta al celular del dueño si hay una activación.",
-      specs: [
-        { label: "Hilos", value: "6 hilos a 8.000 V" },
-        { label: "Energizador", value: "DSC LE-8A" },
-        { label: "Integración", value: "Alarma existente + cámara IP" },
-        { label: "Tiempo de obra", value: "3 días" },
-        { label: "Año", value: "2024" },
-      ],
       photos: [
         "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=750&fit=crop&auto=format",
         "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1200&h=750&fit=crop&auto=format",
@@ -188,14 +135,9 @@ document.addEventListener("DOMContentLoaded", () => {
     card.innerHTML = `
       <img src="${CARD_GRID_PHOTOS[i]}" alt="${obra.name}">
       <div class="obra-card__scrim"></div>
-      <div class="obra-card__meters">
-        <strong>${obra.meters.toLocaleString("es-AR")}</strong>
-        <span>m de perímetro</span>
-      </div>
       <div class="obra-card__info">
         <p class="name">${obra.name}</p>
-        <p class="loc">${obra.location}</p>
-        <p class="mobile-meta">${obra.meters.toLocaleString("es-AR")} m · ${obra.type}</p>
+        <p class="loc">${obra.type} · ${obra.location}</p>
       </div>
     `;
     card.addEventListener("click", () => openLightbox(i));
@@ -210,9 +152,6 @@ document.addEventListener("DOMContentLoaded", () => {
   const lightboxThumbs = document.getElementById("lightboxThumbs");
   const lightboxType = document.getElementById("lightboxType");
   const lightboxName = document.getElementById("lightboxName");
-  const lightboxStory = document.getElementById("lightboxStory");
-  const lightboxMeters = document.getElementById("lightboxMeters");
-  const lightboxSpecs = document.getElementById("lightboxSpecs");
   const lightboxCounter = document.getElementById("lightboxCounter");
   const lightboxPrevPhoto = document.getElementById("lightboxPrevPhoto");
   const lightboxNextPhoto = document.getElementById("lightboxNextPhoto");
@@ -251,16 +190,6 @@ document.addEventListener("DOMContentLoaded", () => {
 
     lightboxType.textContent = `${obra.type} · ${obra.location}`;
     lightboxName.textContent = obra.name;
-    lightboxStory.textContent = obra.story;
-    lightboxMeters.innerHTML = `${obra.meters.toLocaleString("es-AR")}<small>m</small>`;
-
-    lightboxSpecs.innerHTML = "";
-    obra.specs.forEach((spec) => {
-      const row = document.createElement("div");
-      row.className = "lightbox__spec-row";
-      row.innerHTML = `<span class="label">${spec.label}</span><span class="value">${spec.value}</span>`;
-      lightboxSpecs.appendChild(row);
-    });
 
     lightboxCounter.textContent = `Obra ${projectIdx + 1} de ${OBRAS.length}`;
   }
