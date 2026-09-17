@@ -4,8 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>FERMAX — Cercos eléctricos y seguridad electrónica</title>
-<meta name="description" content="Cercos eléctricos, cámaras, alarmas y seguridad electrónica en Cuyo, Rosario y norte de Buenos Aires. 15 años de experiencia, +500 instalaciones.">
+<meta name="description" content="Cercos eléctricos, cámaras, alarmas y seguridad electrónica en Cuyo, Rosario y norte de Buenos Aires. 15 años de experiencia y más de 1000 clientes.">
 <link rel="icon" type="image/svg+xml" href="assets/logo-fermax.svg">
+<link rel="canonical" href="https://fermaxarg.com.ar/">
+
+<!-- Vista previa al compartir el link (WhatsApp, Facebook, etc.) -->
+<meta property="og:type" content="website">
+<meta property="og:locale" content="es_AR">
+<meta property="og:site_name" content="FERMAX">
+<meta property="og:url" content="https://fermaxarg.com.ar/">
+<meta property="og:title" content="FERMAX — Cercos eléctricos y seguridad electrónica">
+<meta property="og:description" content="Cercos eléctricos, cámaras y alarmas en Cuyo, Rosario y norte de Buenos Aires. Más de 1000 clientes. Visita sin cargo.">
+<!-- TODO EDITAR: reemplazar por una foto real de una obra (ideal 1200x630, JPG) -->
+<meta property="og:image" content="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=630&fit=crop&auto=format">
+<meta name="twitter:card" content="summary_large_image">
 
 <!--
   ============================================================================
@@ -23,8 +35,9 @@
   "Obras" (nombre, fotos, historia, specs) hay que ir a main.js -> array OBRAS,
   porque esa sección arma las tarjetas y el lightbox por código.
 
-  Buscar "TODO EDITAR" te lleva directo a los datos de contacto (teléfono,
-  WhatsApp, email, redes) que hoy son de ejemplo.
+  Buscar "TODO EDITAR" te lleva directo a los datos que todavía son de
+  ejemplo (matrícula, CUIT, imagen para compartir). WhatsApp, redes y
+  dominio (fermaxarg.com.ar) ya son los reales.
   ============================================================================
 -->
 
@@ -34,6 +47,8 @@
 <link href="https://fonts.cdnfonts.com/css/sansation" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css">
+<!-- Marca que hay JS antes de pintar, para que las animaciones de scroll no parpadeen -->
+<script>document.documentElement.classList.add("js");</script>
 </head>
 <body>
 
@@ -51,13 +66,14 @@
       <a href="#inicio">Inicio</a>
       <a href="#servicios">Servicios</a>
       <a href="#obras">Obras</a>
+      <a href="#referencias">Referencias</a>
       <a href="#cobertura">Cobertura</a>
       <a href="#nosotros">Nosotros</a>
       <a href="#contacto">Contacto</a>
     </nav>
 
-    <!-- TODO EDITAR: número de WhatsApp (formato: 549 + código de área sin 0 + número sin 15) -->
-    <a href="https://wa.me/5492646000000" target="_blank" rel="noopener noreferrer" class="btn btn--yellow header__cta">
+    <!-- WhatsApp personal de Fernando (formato: 549 + código de área sin 0 + número sin 15) -->
+    <a href="https://wa.me/5492645242923" target="_blank" rel="noopener noreferrer" class="btn btn--yellow header__cta">
       <svg class="icon" viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Pedir presupuesto
     </a>
@@ -72,10 +88,11 @@
     <a href="#inicio">Inicio</a>
     <a href="#servicios">Servicios</a>
     <a href="#obras">Obras</a>
+    <a href="#referencias">Referencias</a>
     <a href="#cobertura">Cobertura</a>
     <a href="#nosotros">Nosotros</a>
     <a href="#contacto">Contacto</a>
-    <a href="https://wa.me/5492646000000" target="_blank" rel="noopener noreferrer" class="btn btn--yellow mobile-menu__cta">
+    <a href="https://wa.me/5492645242923" target="_blank" rel="noopener noreferrer" class="btn btn--yellow mobile-menu__cta">
       <svg class="icon" viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
       Pedir presupuesto
     </a>
@@ -102,10 +119,10 @@
       </h1>
       <p>
         Tu propiedad protegida en Cuyo, Rosario y norte de Buenos Aires — con 15 años
-        de experiencia y más de 500 instalaciones ejecutadas.
+        de experiencia y más de 1000 clientes que confían en nosotros.
       </p>
       <div class="hero__actions">
-        <a href="https://wa.me/5492646000000" target="_blank" rel="noopener noreferrer" class="btn btn--yellow btn--lg">
+        <a href="https://wa.me/5492645242923" target="_blank" rel="noopener noreferrer" class="btn btn--yellow btn--lg">
           <svg class="icon" viewBox="0 0 24 24" fill="currentColor" width="19" height="19"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Pedí tu presupuesto por WhatsApp
         </a>
@@ -118,8 +135,9 @@
   <div class="hero__stats">
     <div class="container">
       <div class="stats-grid">
-        <div class="stats-grid__item"><span class="stats-grid__value">15 años</span><span class="stats-grid__label">en el rubro</span></div>
-        <div class="stats-grid__item"><span class="stats-grid__value">+500</span><span class="stats-grid__label">instalaciones realizadas</span></div>
+        <!-- data-count: el número sube desde 0 cuando aparece en pantalla (ver main.js, "CONTADORES") -->
+        <div class="stats-grid__item"><span class="stats-grid__value" data-count="15" data-suffix=" años">15 años</span><span class="stats-grid__label">en el rubro</span></div>
+        <div class="stats-grid__item"><span class="stats-grid__value" data-count="1000" data-prefix="+">+1000</span><span class="stats-grid__label">clientes</span></div>
         <div class="stats-grid__item"><span class="stats-grid__value">Homologados</span><span class="stats-grid__label">sistemas certificados</span></div>
         <div class="stats-grid__item"><span class="stats-grid__value">8 a 22 hs</span><span class="stats-grid__label">todos los días</span></div>
       </div>
@@ -276,21 +294,18 @@
 <section class="clients">
   <p class="clients__label">Empresas que confían en nosotros</p>
   <div class="clients__viewport">
+    <!-- Los nombres se escriben una sola vez; main.js duplica la lista para que el loop sea continuo -->
     <div class="clients__track" id="clientsTrack">
-      <!-- El contenido se duplica una vez para que el loop sea continuo (ver abajo, mismos nombres repetidos) -->
-      <span class="clients__item" style="--c:#c00">Pulmho Truck</span><span class="clients__dot"></span>
-      <span class="clients__item" style="--c:#1a5c9e">Fenicia Neumáticos</span><span class="clients__dot"></span>
-      <span class="clients__item" style="--c:#007b5e">Swiss Medical</span><span class="clients__dot"></span>
-      <span class="clients__item" style="--c:#5a2d82">Auditorio Juan Victoria</span><span class="clients__dot"></span>
-      <span class="clients__item" style="--c:#e07b00">Energy 360</span><span class="clients__dot"></span>
-      <span class="clients__item" style="--c:#e30613">Prosegur</span><span class="clients__dot"></span>
-      <!-- duplicado -->
-      <span class="clients__item" style="--c:#c00">Pulmho Truck</span><span class="clients__dot"></span>
-      <span class="clients__item" style="--c:#1a5c9e">Fenicia Neumáticos</span><span class="clients__dot"></span>
-      <span class="clients__item" style="--c:#007b5e">Swiss Medical</span><span class="clients__dot"></span>
-      <span class="clients__item" style="--c:#5a2d82">Auditorio Juan Victoria</span><span class="clients__dot"></span>
-      <span class="clients__item" style="--c:#e07b00">Energy 360</span><span class="clients__dot"></span>
-      <span class="clients__item" style="--c:#e30613">Prosegur</span><span class="clients__dot"></span>
+      <span class="clients__item">360 Energy</span><span class="clients__dot"></span>
+      <span class="clients__item">Plásticos Cofeco</span><span class="clients__dot"></span>
+      <span class="clients__item">Bulonera Rawson</span><span class="clients__dot"></span>
+      <span class="clients__item">Fenicia Neumáticos</span><span class="clients__dot"></span>
+      <span class="clients__item">Arenados Riveros</span><span class="clients__dot"></span>
+      <span class="clients__item">El Sauce Neumáticos</span><span class="clients__dot"></span>
+      <span class="clients__item">Bodegas Jaled</span><span class="clients__dot"></span>
+      <span class="clients__item">Empresa Notar</span><span class="clients__dot"></span>
+      <span class="clients__item">Shell Caucete</span><span class="clients__dot"></span>
+      <span class="clients__item">Empresa Yoel</span><span class="clients__dot"></span>
     </div>
   </div>
 </section>
@@ -304,7 +319,7 @@
   <div class="container">
     <div class="section__head">
       <h2>Proyectos <span class="text-yellow">ejecutados</span></h2>
-      <p class="section__sub">Más de 500 instalaciones. Seis obras representativas.</p>
+      <p class="section__sub">Más de 1000 clientes. Seis obras representativas.</p>
     </div>
     <div class="obras__grid" id="obrasGrid"><!-- generado por main.js --></div>
   </div>
@@ -348,6 +363,62 @@
 </section>
 
 <!-- ==========================================================================
+     REFERENCIAS — barrios privados y empresas donde trabajamos
+     A pedido, las personas particulares y funcionarios NO se nombran
+     (sería exponer quién tiene qué sistema en su casa); se mencionan de
+     forma genérica en el bloque de abajo.
+     ========================================================================== -->
+<section id="referencias" class="section section--gray referencias">
+  <div class="container">
+    <div class="section__head">
+      <h2>Trabajos que <span class="text-yellow">nos respaldan</span></h2>
+      <p class="section__sub">Más de 1000 clientes en San Juan, Rosario (Santa Fe) y norte de Buenos Aires.</p>
+    </div>
+
+    <div class="ref-grid">
+      <div class="ref-card">
+        <p class="ref-card__kicker">Barrios privados</p>
+        <ul class="ref-card__list">
+          <li>Aires Village</li>
+          <li>El Tribal</li>
+          <li>Estilo Sur</li>
+          <li>Pedrales</li>
+          <li>Don Francisco</li>
+          <li>La Ernestina</li>
+          <li>Peumayen</li>
+          <li>El Ceibo</li>
+        </ul>
+      </div>
+      <div class="ref-card">
+        <p class="ref-card__kicker">Empresas</p>
+        <ul class="ref-card__list">
+          <li>360 Energy</li>
+          <li>Plásticos Cofeco</li>
+          <li>Bulonera Rawson</li>
+          <li>Arenados Riveros</li>
+          <li>Fenicia Neumáticos</li>
+          <li>El Sauce Neumáticos</li>
+          <li>Empresa Notar</li>
+          <li>Empresa Yoel</li>
+          <li>Bodegas Jaled</li>
+          <li>Estación de servicio Shell Caucete</li>
+        </ul>
+      </div>
+      <div class="ref-card ref-card--dark">
+        <p class="ref-card__kicker">Particulares</p>
+        <p class="ref-card__big">Funcionarios públicos, magistrados, periodistas, profesionales y familias de San Juan</p>
+        <p class="ref-card__note">Por la seguridad de nuestros clientes particulares, no publicamos sus nombres. Referencias disponibles a pedido.</p>
+      </div>
+    </div>
+
+    <div class="ref-counter">
+      <span class="ref-counter__num" data-count="1000" data-prefix="+">+1000</span>
+      <span class="ref-counter__label">clientes protegidos en Cuyo, Rosario y norte de Buenos Aires</span>
+    </div>
+  </div>
+</section>
+
+<!-- ==========================================================================
      NOSOTROS — historia + diferenciales
      ========================================================================== -->
 <section id="nosotros" class="section section--white nosotros">
@@ -360,9 +431,9 @@
         <div class="nosotros__photo">
           <img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=500&fit=crop&auto=format" alt="Equipo FERMAX">
           <div class="nosotros__photo-overlay">
-            <div class="nosotros__stat"><span>+500</span><small>instalaciones realizadas</small></div>
+            <div class="nosotros__stat"><span data-count="1000" data-prefix="+">+1000</span><small>clientes</small></div>
             <div class="nosotros__divider"></div>
-            <div class="nosotros__stat"><span>15 años</span><small>en el mercado</small></div>
+            <div class="nosotros__stat"><span data-count="15" data-suffix=" años">15 años</span><small>en el mercado</small></div>
           </div>
         </div>
         <p>FERMAX nació en San Juan con la convicción de que la seguridad electrónica de calidad no debía ser exclusiva de grandes corporaciones. Hoy, más de una década después, protegemos hogares, industrias y espacios públicos en todo Cuyo y más allá.</p>
@@ -462,26 +533,26 @@
 <section class="section section--white proceso">
   <div class="container">
     <div class="section__head">
-      <h2>Desde el primer contacto <span class="text-yellow">hasta la instalación</span></h2>
+      <h2>Así <span class="text-yellow">trabajamos</span></h2>
     </div>
     <div class="proceso__steps">
       <div class="proceso__step">
         <span class="proceso__num">01</span>
         <div class="proceso__rule"></div>
-        <h3>Contacto y relevamiento</h3>
-        <p>Respondemos el mismo día. Coordinamos una visita técnica sin cargo dentro de las 48 horas para evaluar el terreno y las necesidades.</p>
+        <h3>Nos contactás</h3>
+        <p>Escribinos o llamanos y coordinamos una visita sin cargo para ver tu propiedad.</p>
       </div>
       <div class="proceso__step">
         <span class="proceso__num">02</span>
         <div class="proceso__rule"></div>
-        <h3>Propuesta técnica</h3>
-        <p>Entregamos el presupuesto dentro de los 3 días hábiles. Detallamos materiales, plazos y opciones para que puedas decidir con información completa.</p>
+        <h3>Te presupuestamos</h3>
+        <p>Te recomendamos la mejor solución para tu caso y te pasamos el presupuesto.</p>
       </div>
       <div class="proceso__step">
         <span class="proceso__num">03</span>
         <div class="proceso__rule"></div>
-        <h3>Instalación</h3>
-        <p>Ejecutamos la obra con criterio técnico, orden y limpieza. Capacitamos a los responsables y dejamos todo documentado antes de irnos.</p>
+        <h3>Instalamos</h3>
+        <p>Hacemos el trabajo prolijo y te dejamos todo funcionando.</p>
       </div>
     </div>
     <div class="maint-banner">
@@ -501,10 +572,10 @@
   <div class="cta-final__glow"></div>
   <div class="container cta-final__content">
     <h2>¿Necesitás cerrar<br><span class="text-yellow">tu perímetro?</span></h2>
-    <p class="cta-final__lead">Visita técnica sin cargo. Respuesta el mismo día.</p>
+    <p class="cta-final__lead">Visita técnica sin cargo.</p>
     <p class="cta-final__sub">Atendemos de lunes a domingo de 8 a 22 hs — llamadas y WhatsApp.</p>
     <div class="cta-final__actions">
-      <a href="https://wa.me/5492646000000" target="_blank" rel="noopener noreferrer" class="btn btn--yellow btn--lg">
+      <a href="https://wa.me/5492645242923" target="_blank" rel="noopener noreferrer" class="btn btn--yellow btn--lg">
         <svg class="icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
         Pedí tu presupuesto por WhatsApp
       </a>
@@ -520,7 +591,7 @@
   <div class="container">
     <div class="section__head">
       <h2>Pedí tu <span class="text-yellow">presupuesto</span></h2>
-      <p class="section__sub">Visita sin cargo. Respuesta dentro del mismo día hábil.</p>
+      <p class="section__sub">Visita sin cargo. Contanos qué necesitás y te contactamos.</p>
     </div>
     <div class="contacto__grid">
 
@@ -574,7 +645,7 @@
         <div class="form-success" id="formSuccess" hidden>
           <div class="form-success__icon">✓</div>
           <h3>Recibimos tu consulta</h3>
-          <p>Te respondemos dentro de las 24 horas hábiles. Si preferís una respuesta más rápida, escribinos por WhatsApp.</p>
+          <p>Te vamos a contactar a la brevedad. Si preferís, también podés escribirnos por WhatsApp.</p>
           <button type="button" class="link-reset" id="formReset">Enviar otra consulta</button>
         </div>
       </div>
@@ -582,15 +653,15 @@
       <div class="contacto__side">
         <div class="contact-card">
           <p class="contact-card__title">Contacto directo</p>
-          <!-- TODO EDITAR: datos de contacto reales -->
-          <div class="contact-card__item">
+          <a class="contact-card__item" href="https://wa.me/5492645242923" target="_blank" rel="noopener noreferrer">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 10.8 19.79 19.79 0 01.01 2.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
-            <div><p>+54 264 400-0000</p><small>Llamadas y WhatsApp</small></div>
-          </div>
-          <div class="contact-card__item">
+            <div><p>+54 9 264 524-2923</p><small>Llamadas y WhatsApp — Fernando Rivero</small></div>
+          </a>
+          <!-- Email del dominio: solo recibe si se configura la casilla en el hosting/proveedor de correo -->
+          <a class="contact-card__item" href="mailto:info@fermaxarg.com.ar">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="4" width="20" height="16" rx="2"/><polyline points="2,4 12,13 22,4"/></svg>
-            <div><p>info@fermax.com.ar</p><small>Respondemos el mismo día</small></div>
-          </div>
+            <div><p>info@fermaxarg.com.ar</p><small>Consultas y presupuestos</small></div>
+          </a>
           <div class="contact-card__item">
             <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M21 10c0 7-9 13-9 13S3 17 3 10a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
             <div><p>San Juan, Argentina</p><small>Sede principal</small></div>
@@ -600,7 +671,7 @@
             <div><p>08:00 a 22:00 hs</p><small>Lunes a domingo</small></div>
           </div>
         </div>
-        <a href="https://wa.me/5492646000000" target="_blank" rel="noopener noreferrer" class="btn btn--yellow btn--lg btn--block">
+        <a href="https://wa.me/5492645242923" target="_blank" rel="noopener noreferrer" class="btn btn--yellow btn--lg btn--block">
           <svg class="icon" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
           Pedí tu presupuesto por WhatsApp
         </a>
@@ -629,9 +700,9 @@
           <p>CUIT: 20-28540000-3</p>
         </div>
         <div class="footer__social">
-          <!-- TODO EDITAR: enlaces reales a redes sociales -->
-          <a href="#" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
-          <a href="#" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
+          <a href="https://www.instagram.com/fernandorivero17/" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/></svg></a>
+          <a href="https://www.tiktok.com/@fermax_cercos" target="_blank" rel="noopener noreferrer" aria-label="TikTok"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M14 3v11.5a3.5 3.5 0 11-3.5-3.5"/><path d="M14 3c.4 2.6 2.2 4.4 5 4.6"/></svg></a>
+          <a href="https://www.facebook.com/rivero.fernando.212814" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/></svg></a>
         </div>
       </div>
       <div class="footer__col">

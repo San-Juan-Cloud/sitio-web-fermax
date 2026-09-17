@@ -373,4 +373,106 @@ document.addEventListener("DOMContentLoaded", () => {
     formSuccess.hidden = true;
   });
 
+  /* ==========================================================================
+     7) CINTA DE CLIENTES — duplica la lista para que el loop no tenga cortes
+     (en el HTML los nombres se escriben una sola vez)
+     ========================================================================== */
+  const clientsTrack = document.getElementById("clientsTrack");
+  Array.from(clientsTrack.children).forEach((el) => {
+    const copy = el.cloneNode(true);
+    copy.setAttribute("aria-hidden", "true");
+    clientsTrack.appendChild(copy);
+  });
+
+  /* ==========================================================================
+     8) ANIMACIONES AL HACER SCROLL + CONTADORES
+     Para animar algo nuevo alcanza con sumarlo a REVEAL_GROUPS: cada grupo
+     aparece con un pequeño escalonado entre sus elementos.
+     ========================================================================== */
+  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  const REVEAL_GROUPS = [
+    { selector: ".hero__text > *", stagger: 0.12 },
+    { selector: ".stats-grid__item", stagger: 0.1 },
+    { selector: ".section__head" },
+    { selector: ".accordion__item", stagger: 0.05 },
+    { selector: ".obra-card", stagger: 0.08, variant: "zoom" },
+    { selector: ".ref-card", stagger: 0.12 },
+    { selector: ".ref-counter" },
+    { selector: ".nosotros__col:not(.nosotros__diffs)", variant: "left" },
+    { selector: ".diff-card", stagger: 0.1, variant: "right" },
+    { selector: ".cobertura__map", variant: "zoom" },
+    { selector: ".zone-card", stagger: 0.08 },
+    { selector: ".proceso__step", stagger: 0.15 },
+    { selector: ".maint-banner" },
+    { selector: ".cta-final__content > *", stagger: 0.1 },
+    { selector: ".contacto__form-wrap", variant: "left" },
+    { selector: ".contacto__side", variant: "right" },
+    { selector: ".footer__grid > *", stagger: 0.1 },
+  ];
+
+  const animate = !reduceMotion && "IntersectionObserver" in window;
+
+  if (animate) REVEAL_GROUPS.forEach(({ selector, stagger = 0, variant }) => {
+    document.querySelectorAll(selector).forEach((el, i) => {
+      el.classList.add("reveal");
+      if (variant) el.classList.add(`reveal--${variant}`);
+      // El escalonado se reinicia cada 4 elementos para que nada tarde demasiado
+      if (stagger) el.style.setProperty("--reveal-delay", `${(i % 4) * stagger}s`);
+    });
+  });
+
+  // Contador: sube desde 0 hasta data-count, respetando data-prefix/data-suffix
+  function runCounter(el) {
+    const target = Number(el.dataset.count);
+    const prefix = el.dataset.prefix || "";
+    const suffix = el.dataset.suffix || "";
+    const duration = 1800;
+    const start = performance.now();
+
+    function frame(now) {
+      const t = Math.min((now - start) / duration, 1);
+      const eased = 1 - Math.pow(1 - t, 3); // arranca rápido y frena al final
+      el.textContent = prefix + Math.round(target * eased) + suffix;
+      if (t < 1) requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+  }
+
+  const counters = document.querySelectorAll("[data-count]");
+
+  // Sin animaciones (reduced motion o navegador viejo) todo queda visible y
+  // los contadores muestran directamente el número final del HTML
+  if (animate) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+        el.classList.add("is-visible");
+        revealObserver.unobserve(el);
+        // Terminada la entrada se sacan las clases, para no pisar los hover
+        // ni el atenuado de las tarjetas de cobertura (que usan opacity/transition)
+        el.addEventListener("transitionend", function cleanup(e) {
+          if (e.target !== el || e.propertyName !== "opacity") return;
+          el.removeEventListener("transitionend", cleanup);
+          el.classList.remove("reveal", "reveal--left", "reveal--right", "reveal--zoom", "is-visible");
+          el.style.removeProperty("--reveal-delay");
+        });
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -40px 0px" });
+    document.querySelectorAll(".reveal").forEach((el) => revealObserver.observe(el));
+
+    const counterObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        runCounter(entry.target);
+        counterObserver.unobserve(entry.target);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach((el) => {
+      el.textContent = (el.dataset.prefix || "") + "0" + (el.dataset.suffix || "");
+      counterObserver.observe(el);
+    });
+  }
+
 });
