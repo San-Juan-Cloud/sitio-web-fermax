@@ -46,7 +46,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
 <link href="https://fonts.cdnfonts.com/css/sansation" rel="stylesheet">
 
-<link rel="stylesheet" href="styles.css">
+<!-- El ?v= obliga al navegador a bajar la versión nueva en vez de la guardada
+     en caché. Subir el número cada vez que se toca styles.css o main.js. -->
+<link rel="stylesheet" href="styles.css?v=5">
 <!-- Marca que hay JS antes de pintar, para que las animaciones de scroll no parpadeen -->
 <script>document.documentElement.classList.add("js");</script>
 </head>
@@ -155,7 +157,7 @@
 
     <div class="accordion" id="accordion">
 
-      <div class="accordion__item is-open">
+      <div class="accordion__item">
         <button class="accordion__trigger" type="button">
           <span class="accordion__left"><span class="accordion__num">01</span><span class="accordion__title">Cercos eléctricos perimetrales</span></span>
           <span class="accordion__icon"></span>
@@ -279,16 +281,16 @@
   <div class="clients__viewport">
     <!-- Los nombres se escriben una sola vez; main.js duplica la lista para que el loop sea continuo -->
     <div class="clients__track" id="clientsTrack">
-      <span class="clients__item">360 Energy</span><span class="clients__dot"></span>
-      <span class="clients__item">Plásticos Cofeco</span><span class="clients__dot"></span>
-      <span class="clients__item">Bulonera Rawson</span><span class="clients__dot"></span>
-      <span class="clients__item">Fenicia Neumáticos</span><span class="clients__dot"></span>
-      <span class="clients__item">Arenados Riveros</span><span class="clients__dot"></span>
-      <span class="clients__item">El Sauce Neumáticos</span><span class="clients__dot"></span>
-      <span class="clients__item">Bodegas Jaled</span><span class="clients__dot"></span>
-      <span class="clients__item">Empresa Notar</span><span class="clients__dot"></span>
-      <span class="clients__item">Shell Caucete</span><span class="clients__dot"></span>
-      <span class="clients__item">Empresa Yoel</span><span class="clients__dot"></span>
+      <span class="clients__item">360 Energy</span>
+      <span class="clients__item">Plásticos Cofeco</span>
+      <span class="clients__item">Bulonera Rawson</span>
+      <span class="clients__item">Fenicia Neumáticos</span>
+      <span class="clients__item">Arenados Riveros</span>
+      <span class="clients__item">El Sauce Neumáticos</span>
+      <span class="clients__item">Bodegas Jaled</span>
+      <span class="clients__item">Empresa Notar</span>
+      <span class="clients__item">Shell Caucete</span>
+      <span class="clients__item">Empresa Yoel</span>
     </div>
   </div>
 </section>
@@ -694,6 +696,6 @@
   </div>
 </footer>
 
-<script src="main.js"></script>
+<script src="main.js?v=2"></script>
 </body>
 </html>

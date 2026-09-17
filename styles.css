@@ -25,6 +25,14 @@
 
 html { scroll-behavior: smooth; }
 
+/* Evita que la página se pueda correr de costado en el celular: las
+   animaciones de entrada desplazan bloques unos píxeles hacia los lados
+   y eso alcanzaba para que apareciera una franja blanca a la derecha. */
+html, body { overflow-x: hidden; }
+@supports (overflow: clip) {
+  html, body { overflow-x: clip; }
+}
+
 body {
   margin: 0;
   font-family: var(--font-heading);
@@ -63,7 +71,6 @@ h1, h2, h3, p { margin: 0; }
 .section--white { background: #fff; }
 .section--gray { background: var(--gray-bg); }
 .section--black { background: var(--dark-2); }
-.section--black h2, .section--black .section__sub { color: #efefef; }
 
 .section__head { margin-bottom: 56px; }
 .section__head h2 {
@@ -72,6 +79,9 @@ h1, h2, h3, p { margin: 0; }
   line-height: 1.1;
   color: var(--dark);
 }
+/* Va después de .section__head h2 para que gane sobre el color oscuro */
+.section--black h2, .section--black .section__head h2,
+.section--black .section__sub { color: #efefef; }
 .section__sub {
   margin-top: 10px;
   font-family: var(--font-body);
@@ -249,7 +259,9 @@ h1, h2, h3, p { margin: 0; }
 }
 .hero__content {
   position: relative;
-  padding: 128px 0;
+  /* padding-block (y no "padding: 128px 0") para no pisar el margen
+     lateral que trae .container: si se pisa, el texto queda pegado al borde */
+  padding-block: 128px;
   width: 100%;
 }
 .hero__text { max-width: 640px; }
@@ -400,10 +412,16 @@ h1, h2, h3, p { margin: 0; }
    ========================================================================== */
 
 .clients {
+  /* --clients-gap = separación entre los nombres de la cinta.
+     Tocar acá para juntarlos o separarlos (más chico = más juntos). */
+  --clients-gap: 56px;
   padding: 56px 0;
   overflow: hidden;
   background: var(--gray-bg);
   border-top: 1px solid var(--gray-border);
+}
+@media (min-width: 768px) {
+  .clients { --clients-gap: 84px; }
 }
 .clients__label {
   max-width: 1280px;
@@ -430,7 +448,7 @@ h1, h2, h3, p { margin: 0; }
 .clients__track {
   display: flex;
   align-items: center;
-  gap: 56px;
+  gap: var(--clients-gap);
   width: max-content;
   white-space: nowrap;
   animation: marquee 30s linear infinite;
@@ -448,8 +466,6 @@ h1, h2, h3, p { margin: 0; }
   transition: color .3s;
 }
 .clients__item:hover { color: var(--c, var(--yellow)); }
-.clients__dot { width: 4px; height: 4px; background: var(--yellow); margin-left: 56px; }
-.clients__dot:last-child { display: none; }
 
 /* ============================================================================
    OBRAS — grilla + tarjetas (el markup interno lo genera main.js)
@@ -880,7 +896,7 @@ h1, h2, h3, p { margin: 0; }
    ========================================================================== */
 
 .footer { background: var(--dark-2); border-top: 1px solid rgba(252,205,47,0.1); }
-.footer__inner { padding: 56px 0; }
+.footer__inner { padding-block: 56px; }
 .footer__grid { display: grid; grid-template-columns: 1fr; gap: 40px; }
 @media (min-width: 768px) { .footer__grid { grid-template-columns: 1fr 1fr; } }
 @media (min-width: 1024px) { .footer__grid { grid-template-columns: 2fr 1fr 1fr; } }
