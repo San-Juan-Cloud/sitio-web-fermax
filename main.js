@@ -16,12 +16,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
   /* ==========================================================================
      1) DATOS DE OBRAS — para agregar/quitar/editar un proyecto, tocar acá.
-     Cada obra necesita: name, location, type, photos[]
-     Clientes reales; las fotos todavía son de ejemplo (Unsplash).
+     Cada obra necesita: name y photos[]; type y location son opcionales
+     Las seis tarjetas recuperadas usan imágenes ilustrativas; Jaled y casas usan fotos reales.
      ========================================================================== */
   const OBRAS = [
     {
       name: "360 Energy",
+      illustrative: true,
       location: "San Juan",
       type: "Planta industrial",
       photos: [
@@ -32,6 +33,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Barrio Estilo Sur",
+      illustrative: true,
       location: "San Juan",
       type: "Barrio privado",
       photos: [
@@ -43,6 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Pulmho Truck",
+      illustrative: true,
       location: "San Juan",
       type: "Playa de camiones",
       photos: [
@@ -53,6 +56,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Swiss Medical",
+      illustrative: true,
       location: "San Juan",
       type: "Centro médico",
       photos: [
@@ -63,6 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Auditorio Juan Victoria",
+      illustrative: true,
       location: "San Juan",
       type: "Espacio cultural",
       photos: [
@@ -73,6 +78,7 @@ document.addEventListener("DOMContentLoaded", () => {
     },
     {
       name: "Fenicia Neumáticos",
+      illustrative: true,
       location: "San Juan",
       type: "Comercio automotriz",
       photos: [
@@ -80,18 +86,12 @@ document.addEventListener("DOMContentLoaded", () => {
         "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1200&h=750&fit=crop&auto=format",
         "https://images.unsplash.com/photo-1582139329536-e7284fece509?w=1200&h=750&fit=crop&auto=format",
       ],
-    },
+    },    { name: "Bodegas Jaled", type: "Cerco eléctrico", location: "San Juan", photos: ["assets/fotos/bodegas-jaled-luces-local.png", "assets/fotos/bodegas-jaled-2.jpeg"] },
+    { name: "Casas residenciales", type: "Cercos eléctricos", location: "San Juan", photos: ["assets/fotos/residencial-cartel-local.png", "assets/fotos/obra-3.webp", "assets/fotos/obra-4.webp", "assets/fotos/obra-5.webp", "assets/fotos/residencial-piso-local.png"] },
   ];
 
   // Foto de portada de cada tarjeta de la grilla (mismo orden que OBRAS)
-  const CARD_GRID_PHOTOS = [
-    "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=800&h=900&fit=crop&auto=format",
-    "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=800&h=500&fit=crop&auto=format",
-    "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=800&h=500&fit=crop&auto=format",
-    "https://images.unsplash.com/photo-1497366216548-37526070297c?w=800&h=500&fit=crop&auto=format",
-    "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&h=500&fit=crop&auto=format",
-    "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&h=500&fit=crop&auto=format",
-  ];
+  const CARD_GRID_PHOTOS = OBRAS.map((o) => o.photos[0]);
 
   /* ==========================================================================
      2) MENÚ MOBILE
@@ -137,7 +137,8 @@ document.addEventListener("DOMContentLoaded", () => {
       <div class="obra-card__scrim"></div>
       <div class="obra-card__info">
         <p class="name">${obra.name}</p>
-        <p class="loc">${obra.type} · ${obra.location}</p>
+        ${obra.illustrative ? `<small>Imagen ilustrativa</small>` : ""}
+        ${obra.type ? `<p class="loc">${obra.location ? `${obra.type} · ${obra.location}` : obra.type}</p>` : ""}
       </div>
     `;
     card.addEventListener("click", () => openLightbox(i));
@@ -177,21 +178,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
     lightboxPhoto.src = obra.photos[photoIdx];
     lightboxPhoto.alt = obra.name;
-    lightboxCaption.textContent = `${obra.name} — foto ${photoIdx + 1} de ${obra.photos.length}`;
+    lightboxCaption.textContent = obra.photos.length > 1 ? `${obra.name} — foto ${photoIdx + 1} de ${obra.photos.length}` : obra.name;
+
+    if (obra.illustrative) lightboxCaption.textContent += " · Imagen ilustrativa";
 
     lightboxThumbs.innerHTML = "";
     obra.photos.forEach((photo, j) => {
       const btn = document.createElement("button");
+      btn.setAttribute("aria-label", `Ver foto ${j + 1} de ${obra.name}`);
       if (j === photoIdx) btn.classList.add("is-active");
       btn.innerHTML = `<img src="${photo}" alt="">`;
       btn.addEventListener("click", () => { photoIdx = j; renderLightbox(); });
       lightboxThumbs.appendChild(btn);
     });
 
-    lightboxType.textContent = `${obra.type} · ${obra.location}`;
+    lightboxType.textContent = obra.type ? (obra.location ? `${obra.type} · ${obra.location}` : obra.type) : "";
     lightboxName.textContent = obra.name;
 
     lightboxCounter.textContent = `Obra ${projectIdx + 1} de ${OBRAS.length}`;
+
+    const single = obra.photos.length < 2;
+    lightboxThumbs.hidden = single;
+    lightboxPrevPhoto.hidden = single;
+    lightboxNextPhoto.hidden = single;
   }
 
   lightboxClose.addEventListener("click", closeLightbox);
@@ -229,7 +238,7 @@ document.addEventListener("DOMContentLoaded", () => {
      5) COBERTURA — resaltar zona en el mapa y en las tarjetas al pasar el mouse
      ========================================================================== */
   const zoneCards = document.querySelectorAll(".zone-card");
-  const zoneMapEls = document.querySelectorAll(".zone-halo, .zone-points, .zone-label");
+  const zoneMapEls = document.querySelectorAll(".zone-region, .zone-label");
 
   function setActiveZone(zoneId) {
     zoneCards.forEach((card) => {
@@ -239,6 +248,7 @@ document.addEventListener("DOMContentLoaded", () => {
       card.classList.toggle("is-dimmed", isDimmed);
     });
     zoneMapEls.forEach((el) => {
+      el.classList.toggle("is-active", el.dataset.zone === zoneId);
       // El mapa completo (Cuyo/Rosario/BsAs) se atenúa salvo la zona activa;
       // "national" no tiene marca en el mapa, así que no afecta nada ahí.
       if (zoneId === null || zoneId === "national") {
@@ -249,9 +259,22 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  let selectedZone = null;
   zoneCards.forEach((card) => {
+    card.tabIndex = 0;
+    card.setAttribute("role", "button");
+    card.setAttribute("aria-pressed", "false");
+    const select = () => {
+      selectedZone = selectedZone === card.dataset.zone ? null : card.dataset.zone;
+      zoneCards.forEach(c => c.setAttribute("aria-pressed", String(c.dataset.zone === selectedZone)));
+      setActiveZone(selectedZone);
+    };
+    card.addEventListener("click", select);
+    card.addEventListener("keydown", e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); select(); } });
     card.addEventListener("mouseenter", () => setActiveZone(card.dataset.zone));
-    card.addEventListener("mouseleave", () => setActiveZone(null));
+    card.addEventListener("mouseleave", () => setActiveZone(selectedZone));
+    card.addEventListener("focus", () => setActiveZone(card.dataset.zone));
+    card.addEventListener("blur", () => setActiveZone(selectedZone));
   });
 
   /* ==========================================================================

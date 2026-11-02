@@ -251,7 +251,7 @@ h1, h2, h3, p { margin: 0; }
 .hero__bg img {
   width: 100%; height: 100%;
   object-fit: cover;
-  filter: brightness(0.22) saturate(0.6);
+  filter: brightness(0.6) saturate(0.85);
 }
 .hero__overlay {
   position: absolute; inset: 0;
@@ -704,7 +704,7 @@ h1, h2, h3, p { margin: 0; }
   color: #555;
   margin-bottom: 16px;
 }
-.nosotros__photo { position: relative; overflow: hidden; aspect-ratio: 16/9; margin-bottom: 32px; }
+.nosotros__photo { position: relative; overflow: hidden; aspect-ratio: 4/3; margin-bottom: 32px; }
 .nosotros__photo img { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.75) saturate(0.8); }
 .nosotros__photo-overlay {
   position: absolute; bottom: 0; left: 0; right: 0;
@@ -957,3 +957,38 @@ h1, h2, h3, p { margin: 0; }
 }
 .footer__credit a { color: rgba(255,255,255,0.4); transition: color .2s; }
 .footer__credit a:hover { color: var(--yellow); }
+
+/* ============================================================================
+   RESPALDO — distribuidor oficial, proveedor y premio
+   ========================================================================== */
+
+.respaldo { background: #fff; border-bottom: 1px solid var(--gray-border); padding: 36px 0; }
+.respaldo__grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
+@media (min-width: 768px) { .respaldo__grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+.respaldo__item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
+.respaldo__logo { height: 64px; width: auto; max-width: 100%; object-fit: contain; margin-bottom: 8px; }
+.respaldo__logo--wide { height: 34px; margin: 15px 0 23px; }
+.respaldo__title { font-family: var(--font-heading); font-weight: 700; font-size: 16px; color: var(--dark); }
+.respaldo__desc { font-size: 14px; color: #777; }
+
+.cta-final__pay { font-size: 15px; color: #c8c8c8; margin-bottom: 28px; }
+.cta-final__pay a, .contacto__pay a { color: var(--yellow); text-decoration: underline; text-underline-offset: 3px; }
+.contacto__pay { margin-top: 14px; font-size: 14px; color: #555; text-align: center; }
+.contacto__pay a { color: #8a6a00; }
+
+/* Encuadre cuadrado: trabajador y camioneta visibles. */
+.nosotros__photo { width:100%; max-width:440px; aspect-ratio:1/1; margin-inline:auto; }
+.nosotros__photo img { object-fit:cover; object-position:50% 55%; }
+
+/* Cobertura provincial: geometría IGN y áreas locales orientativas. */
+.province { fill:#dedede; stroke:#aaa; stroke-width:.7; stroke-linejoin:round; }
+.zone-region { fill:#ffd12c; stroke:#aa8614; stroke-width:1; transition:opacity .2s,fill .2s; }
+.zone-region.is-active { fill:#ffc400; stroke:#705400; stroke-width:1.5; }
+.coverage-labels { font:700 13px system-ui,sans-serif; fill:#1a1a1a; }
+.coverage-labels path { fill:none; stroke:#999; stroke-width:1; }
+.zone-card { cursor:pointer; }
+.zone-card:focus-visible { outline:2px solid #b28b00; outline-offset:4px; }
+
+/* Espacios reservados para contenido confirmado. */
+.content-pending { border-left:3px solid var(--yellow); padding:20px 24px; background:rgba(128,128,128,.045); max-width:760px; }
+.content-pending p { margin:0; color:#666; line-height:1.7; }
