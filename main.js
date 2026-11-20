@@ -21,30 +21,51 @@ document.addEventListener("DOMContentLoaded", () => {
   const OBRAS = [
     {
       photos: [
-        "assets/fotos/obra-2.webp",
         "assets/fotos/residencial-cartel-local.webp",
-        "assets/fotos/hero-luces-local.webp",
-        "assets/fotos/residencial-piso-local.webp",
-        "assets/fotos/obra-3.webp",
-        "assets/fotos/bodegas-jaled-2.jpeg",
-        "assets/fotos/obra-4.webp",
-        "assets/fotos/obra-5.webp",
         "assets/fotos/obras/obra-01.webp",
-        "assets/fotos/obras/obra-02.webp",
-        "assets/fotos/obras/obra-03.webp",
-        "assets/fotos/obras/obra-04.webp",
+        "assets/fotos/residencial-piso-local.webp",
         "assets/fotos/obras/obra-05.webp",
-        "assets/fotos/obras/obra-06.webp",
+        "assets/fotos/obra-4.webp",
+        "assets/fotos/obras/obra-03.webp",
+        "assets/fotos/hero-luces-local.webp",
+        "assets/fotos/obras/obra-02.webp",
+        "assets/fotos/obra-5.webp",
         "assets/fotos/obras/obra-07.webp",
+        "assets/fotos/obra-3.webp",
         "assets/fotos/obras/obra-08.webp",
-        "assets/fotos/obras/obra-10.webp",
         "assets/fotos/obras/obra-11.webp",
+        "assets/fotos/obras/obra-06.webp",
+        "assets/fotos/obra-2.webp",
+        "assets/fotos/obras/obra-04.webp",
         "assets/fotos/obras/obra-12.webp",
+        "assets/fotos/obras/obra-10.webp",
+        "assets/fotos/bodegas-jaled-2.jpeg",
         "assets/fotos/obras/obra-14.webp",
         "assets/fotos/obras/obra-16.webp",
       ],
     },
   ];
+
+  // ¿ y ?: Sansation los dibuja poco legibles. Se envuelven en <span class="q">
+  // (fuente Roboto, ver styles.css) solo dentro de títulos, botones y preguntas.
+  document.querySelectorAll("h1, h2, h3, .accordion__title").forEach((el) => {
+    const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+    const nodes = [];
+    while (walker.nextNode()) if (/[¿?]/.test(walker.currentNode.nodeValue)) nodes.push(walker.currentNode);
+    nodes.forEach((node) => {
+      const frag = document.createDocumentFragment();
+      node.nodeValue.split(/([¿?])/).forEach((part) => {
+        if (!part) return;
+        if (part === "¿" || part === "?") {
+          const span = document.createElement("span");
+          span.className = "q";
+          span.textContent = part;
+          frag.appendChild(span);
+        } else frag.appendChild(document.createTextNode(part));
+      });
+      node.replaceWith(frag);
+    });
+  });
 
   /* ==========================================================================
      2) MENÚ MOBILE
@@ -190,6 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
       btn.innerHTML = `<img src="${photo}" alt="">`;
       btn.addEventListener("click", () => { photoIdx = j; renderLightbox(); });
       lightboxThumbs.appendChild(btn);
+      if (j === photoIdx) requestAnimationFrame(() => { lightboxThumbs.scrollLeft = btn.offsetLeft - lightboxThumbs.clientWidth / 2 + btn.offsetWidth / 2; });
     });
 
     lightboxType.textContent = obra.type ? (obra.location ? `${obra.type} · ${obra.location}` : obra.type) : "";
