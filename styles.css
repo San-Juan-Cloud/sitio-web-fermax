@@ -7,6 +7,15 @@
    tocarlos ahí arriba y se actualiza en todo el sitio.
    ========================================================================== */
 
+/* cdnfonts declara tres veces Sansation 400 y la ultima es la cursiva, por eso
+   el texto normal salia en italica. Esta regla (posterior) fija la Regular. */
+@font-face {
+  font-family: 'Sansation';
+  font-style: normal;
+  font-weight: 400;
+  src: url('https://fonts.cdnfonts.com/s/382/Sansation-Regular.woff') format('woff');
+}
+
 :root {
   --yellow: #fccd2f;
   --dark: #0a0a0a;
@@ -430,7 +439,7 @@ h1, h2, h3, p { margin: 0; }
   text-align: center;
   font-size: 14px;
   font-weight: 600;
-  color: #888;
+  color: #666;
   letter-spacing: .04em;
 }
 .clients__viewport { position: relative; overflow: hidden; }
@@ -462,7 +471,7 @@ h1, h2, h3, p { margin: 0; }
   font-weight: 700;
   font-size: 20px;
   letter-spacing: .02em;
-  color: #ccc;
+  color: #8a8a8a;
   transition: color .3s;
 }
 .clients__item:hover { color: var(--c, var(--yellow)); }
@@ -801,12 +810,13 @@ h1, h2, h3, p { margin: 0; }
 .proceso__steps {
   display: grid;
   grid-template-columns: 1fr;
-  gap: 40px;
+  gap: 28px;
   margin-bottom: 64px;
 }
 @media (min-width: 768px) { .proceso__steps { grid-template-columns: repeat(3, 1fr); } }
 .proceso__step { display: flex; flex-direction: column; gap: 16px; }
-.proceso__num { font-weight: 700; font-size: 72px; line-height: 1; color: var(--yellow); }
+.proceso__num { font-weight: 700; font-size: 44px; line-height: 1; color: var(--yellow); }
+@media (min-width: 768px) { .proceso__num { font-size: 72px; } }
 .proceso__rule { width: 40px; height: 1px; background: var(--gray-border); }
 .proceso__step h3 { font-weight: 600; font-size: 16px; color: var(--dark); }
 .proceso__step p { font-family: var(--font-body); font-weight: 300; font-size: 14px; line-height: 1.6; color: #777; }
@@ -866,12 +876,13 @@ h1, h2, h3, p { margin: 0; }
 .contacto__grid { display: grid; gap: 64px; }
 @media (min-width: 1024px) { .contacto__grid { grid-template-columns: 1fr 1fr; } }
 
-.contacto__form-wrap { background: #fff; padding: 32px; border: 1px solid var(--gray-border); }
+.contacto__form-wrap { background: #fff; padding: 20px; border: 1px solid var(--gray-border); }
+@media (min-width: 768px) { .contacto__form-wrap { padding: 32px; } }
 .form-row { display: grid; grid-template-columns: 1fr; gap: 20px; margin-bottom: 20px; }
 @media (min-width: 768px) { .form-row { grid-template-columns: 1fr 1fr; } }
 .field { display: flex; flex-direction: column; gap: 6px; margin-bottom: 20px; }
 .form-row .field { margin-bottom: 0; }
-.field label { font-size: 12px; font-weight: 600; color: #888; }
+.field label { font-size: 14px; font-weight: 600; color: #666; }
 .field input, .field select, .field textarea {
   width: 100%;
   padding: 12px 16px;
@@ -983,14 +994,18 @@ h1, h2, h3, p { margin: 0; }
    RESPALDO — distribuidor oficial, proveedor y premio
    ========================================================================== */
 
-.respaldo { background: #fff; border-bottom: 1px solid var(--gray-border); padding: 36px 0; }
-.respaldo__grid { display: grid; grid-template-columns: 1fr; gap: 28px; }
-@media (min-width: 768px) { .respaldo__grid { grid-template-columns: repeat(3, 1fr); gap: 24px; } }
+.respaldo { background: #fff; border-bottom: 1px solid var(--gray-border); padding: 24px 0; }
+@media (min-width: 768px) { .respaldo { padding: 36px 0; } }
+.respaldo__grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; align-items: start; }
+@media (min-width: 768px) { .respaldo__grid { gap: 24px; } }
 .respaldo__item { display: flex; flex-direction: column; align-items: center; text-align: center; gap: 4px; }
-.respaldo__logo { height: 64px; width: auto; max-width: 100%; object-fit: contain; margin-bottom: 8px; }
-.respaldo__logo--wide { height: 34px; margin: 15px 0 23px; }
-.respaldo__title { font-family: var(--font-heading); font-weight: 700; font-size: 16px; color: var(--dark); }
-.respaldo__desc { font-size: 14px; color: #777; }
+.respaldo__logo { height: 40px; width: auto; max-width: 100%; object-fit: contain; margin-bottom: 8px; }
+.respaldo__logo--wide { height: 20px; margin: 10px 0 10px; }
+@media (min-width: 768px) { .respaldo__logo { height: 64px; } .respaldo__logo--wide { height: 34px; margin: 15px 0 23px; } }
+.respaldo__title { font-family: var(--font-heading); font-weight: 700; font-size: 12px; line-height: 1.3; color: var(--dark); }
+@media (min-width: 768px) { .respaldo__title { font-size: 16px; } }
+.respaldo__desc { font-size: 11px; line-height: 1.3; color: #666; }
+@media (min-width: 768px) { .respaldo__desc { font-size: 14px; } }
 
 .cta-final__pay { font-size: 15px; color: #c8c8c8; margin-bottom: 28px; }
 .cta-final__pay a, .contacto__pay a { color: var(--yellow); text-decoration: underline; text-underline-offset: 3px; }
@@ -1016,3 +1031,9 @@ h1, h2, h3, p { margin: 0; }
 
 /* ¿ y ? : Sansation los dibuja poco legibles; main.js los envuelve en .q */
 .q { font-family: 'Roboto', Arial, sans-serif; font-weight: 700; font-style: normal; }
+
+/* FAQ: solo se ven las primeras; el resto con "Ver mas" */
+.faq .faq-extra { display: none; }
+.faq.is-expanded .faq-extra { display: block; }
+.faq-more { display: block; margin: 24px auto 0; padding: 12px 24px; background: none; border: 1px solid var(--dark); color: var(--dark); font-weight: 600; font-size: 14px; transition: background-color .2s, color .2s; }
+.faq-more:hover { background: var(--dark); color: #fff; }

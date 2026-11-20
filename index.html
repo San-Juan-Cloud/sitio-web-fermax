@@ -40,6 +40,7 @@
   ============================================================================
 -->
 
+<script>if(/github\.io$/.test(location.hostname)){var m=document.createElement("meta");m.name="robots";m.content="noindex";document.head.appendChild(m);}</script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
@@ -48,7 +49,7 @@
 <!-- El ?v= obliga al navegador a bajar la versión nueva en vez de la guardada
      en caché. Subir el número cada vez que se toca styles.css o main.js. -->
 <link href="https://fonts.cdnfonts.com/css/sansation" rel="stylesheet">
-<link rel="stylesheet" href="styles.css?v=24">
+<link rel="stylesheet" href="styles.css?v=25">
 <!-- Marca que hay JS antes de pintar, para que las animaciones de scroll no parpadeen -->
 <script>document.documentElement.classList.add("js");</script>
 </head>
@@ -530,7 +531,7 @@
     </div>
     <div class="maint-banner">
       <div>
-        <p class="maint-banner__title">Mantenimiento y soporte — servicio permanente</p>
+        <p class="maint-banner__title">Mantenimiento y soporte: servicio permanente</p>
         <p class="maint-banner__desc">Contratos de mantenimiento preventivo y asistencia ante fallas. El sistema que instalamos seguimos siendo responsables de que funcione.</p>
       </div>
       <a href="#contacto" class="btn btn--yellow">Consultar plan</a>
@@ -574,61 +575,62 @@
       </div>
 
       <div class="accordion__item">
-        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">06</span><span class="accordion__title">¿Gasta mucha electricidad?</span></span><span class="accordion__icon"></span></button>
-        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Muy poca, similar a una lamparita de bajo consumo.</p></div></div></div>
-      </div>
-
-      <div class="accordion__item">
-        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">07</span><span class="accordion__title">¿Funciona con lluvia?</span></span><span class="accordion__icon"></span></button>
-        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Sí. Una instalación correcta funciona con lluvia y humedad.</p></div></div></div>
-      </div>
-
-      <div class="accordion__item">
-        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">08</span><span class="accordion__title">¿Suena una alarma? ¿Me avisa al celular?</span></span><span class="accordion__icon"></span></button>
-        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Tiene sirena propia y puede conectarse a la alarma de la casa, a un servicio de monitoreo o a una app.</p></div></div></div>
-      </div>
-
-      <div class="accordion__item">
-        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">09</span><span class="accordion__title">¿Se puede poner sobre cualquier muro o reja?</span></span><span class="accordion__icon"></span></button>
-        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Casi siempre. Usamos soportes rectos, en ángulo o en "L" según el caso.</p></div></div></div>
-      </div>
-
-      <div class="accordion__item">
-        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">10</span><span class="accordion__title">¿Interfiere con la TV, el wifi o el portón eléctrico?</span></span><span class="accordion__icon"></span></button>
-        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>No, si está bien instalado y con una correcta puesta a tierra.</p></div></div></div>
-      </div>
-
-      <div class="accordion__item">
-        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">11</span><span class="accordion__title">¿Las plantas o enredaderas pueden afectarlo?</span></span><span class="accordion__icon"></span></button>
-        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Sí. Si tocan los hilos generan pérdida de potencia y falsas alarmas, por eso hay que mantenerlas podadas.</p></div></div></div>
-      </div>
-
-      <div class="accordion__item">
-        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">12</span><span class="accordion__title">¿Cuánto sale?</span></span><span class="accordion__icon"></span></button>
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">06</span><span class="accordion__title">¿Cuánto sale?</span></span><span class="accordion__icon"></span></button>
         <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Depende de los metros a cubrir y del equipo. La visita técnica y el presupuesto son sin cargo.</p></div></div></div>
       </div>
 
       <div class="accordion__item">
-        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">13</span><span class="accordion__title">¿Hacen mantenimiento?</span></span><span class="accordion__icon"></span></button>
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">07</span><span class="accordion__title">¿Hacen mantenimiento?</span></span><span class="accordion__icon"></span></button>
         <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Sí, con revisiones periódicas y asistencia ante fallas.</p></div></div></div>
       </div>
 
-      <div class="accordion__item">
+      <div class="accordion__item faq-extra">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">08</span><span class="accordion__title">¿Funciona con lluvia?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Sí. Una instalación correcta funciona con lluvia y humedad.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item faq-extra">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">09</span><span class="accordion__title">¿Gasta mucha electricidad?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Muy poca, similar a una lamparita de bajo consumo.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item faq-extra">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">10</span><span class="accordion__title">¿Suena una alarma? ¿Me avisa al celular?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Tiene sirena propia y puede conectarse a la alarma de la casa, a un servicio de monitoreo o a una app.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item faq-extra">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">11</span><span class="accordion__title">¿Se puede poner sobre cualquier muro o reja?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Casi siempre. Usamos soportes rectos, en ángulo o en "L" según el caso.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item faq-extra">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">12</span><span class="accordion__title">¿Interfiere con la TV, el wifi o el portón eléctrico?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>No, si está bien instalado y con una correcta puesta a tierra.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item faq-extra">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">13</span><span class="accordion__title">¿Las plantas o enredaderas pueden afectarlo?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Sí. Si tocan los hilos generan pérdida de potencia y falsas alarmas, por eso hay que mantenerlas podadas.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item faq-extra">
         <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">14</span><span class="accordion__title">¿Se puede ampliar después?</span></span><span class="accordion__icon"></span></button>
         <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Sí, se pueden agregar metros o zonas.</p></div></div></div>
       </div>
 
-      <div class="accordion__item">
+      <div class="accordion__item faq-extra">
         <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">15</span><span class="accordion__title">¿Es mejor que la concertina o los pinchos?</span></span><span class="accordion__icon"></span></button>
         <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>El cerco eléctrico suma alarma y tiene una estética más prolija. La concertina es más barata, pero es solo una barrera física.</p></div></div></div>
       </div>
 
-      <div class="accordion__item">
+      <div class="accordion__item faq-extra">
         <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">16</span><span class="accordion__title">¿Sirve si ya tengo alarma o cámaras?</span></span><span class="accordion__icon"></span></button>
         <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Sí. Funciona como primera barrera en el perímetro y se integra con ambos sistemas.</p></div></div></div>
       </div>
 
     </div>
+    <button type="button" class="faq-more" id="faqMore" aria-expanded="false">Ver más preguntas</button>
   </div>
 </section>
 
@@ -798,6 +800,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=17"></script>
+<script src="main.js?v=18"></script>
 </body>
 </html>

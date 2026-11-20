@@ -100,6 +100,17 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
+  // FAQ: botón "Ver más preguntas"
+  const faqEl = document.getElementById("faq");
+  const faqMore = document.getElementById("faqMore");
+  if (faqEl && faqMore) {
+    faqMore.addEventListener("click", () => {
+      const open = faqEl.classList.toggle("is-expanded");
+      faqMore.textContent = open ? "Ver menos" : "Ver más preguntas";
+      faqMore.setAttribute("aria-expanded", String(open));
+    });
+  }
+
   /* ==========================================================================
      4) OBRAS — arma la grilla de tarjetas y el lightbox
      ========================================================================== */
