@@ -2,9 +2,8 @@
    FERMAX — comportamiento del sitio
    ============================================================================
    Este archivo tiene, en orden:
-     1) Datos de "Proyectos ejecutados" (array OBRAS) — EDITAR ACÁ los textos,
-        fotos y specs de cada obra. Las fotos de las tarjetas están en
-        CARD_GRID_PHOTOS (una por obra, en el mismo orden que OBRAS).
+     1) Fotos de "Proyectos ejecutados" (array OBRAS) — EDITAR ACÁ para sumar
+        o sacar fotos; el carrusel arma una diapositiva por cada foto.
      2) Menú mobile (hamburguesa)
      3) Acordeón de Servicios
      4) Grilla de Obras + Lightbox (galería con detalle)
@@ -15,83 +14,37 @@
 document.addEventListener("DOMContentLoaded", () => {
 
   /* ==========================================================================
-     1) DATOS DE OBRAS — para agregar/quitar/editar un proyecto, tocar acá.
-     Cada obra necesita: name y photos[]; type y location son opcionales
-     Las seis tarjetas recuperadas usan imágenes ilustrativas; Jaled y casas usan fotos reales.
+     1) FOTOS DE OBRAS — para agregar o quitar fotos del carrusel, tocar acá:
+     basta con sumar o sacar una línea de photos[]. Solo fotos reales, sin nombres.
+     (Las empresas figuran en la cinta de clientes y en Referencias.)
      ========================================================================== */
   const OBRAS = [
     {
-      name: "360 Energy",
-      illustrative: true,
-      location: "San Juan",
-      type: "Planta industrial",
       photos: [
-        "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=750&fit=crop&auto=format",
+        "assets/fotos/obra-2.webp",
+        "assets/fotos/residencial-cartel-local.webp",
+        "assets/fotos/hero-luces-local.webp",
+        "assets/fotos/residencial-piso-local.webp",
+        "assets/fotos/obra-3.webp",
+        "assets/fotos/bodegas-jaled-2.jpeg",
+        "assets/fotos/obra-4.webp",
+        "assets/fotos/obra-5.webp",
+        "assets/fotos/obras/obra-01.webp",
+        "assets/fotos/obras/obra-02.webp",
+        "assets/fotos/obras/obra-03.webp",
+        "assets/fotos/obras/obra-04.webp",
+        "assets/fotos/obras/obra-05.webp",
+        "assets/fotos/obras/obra-06.webp",
+        "assets/fotos/obras/obra-07.webp",
+        "assets/fotos/obras/obra-08.webp",
+        "assets/fotos/obras/obra-10.webp",
+        "assets/fotos/obras/obra-11.webp",
+        "assets/fotos/obras/obra-12.webp",
+        "assets/fotos/obras/obra-14.webp",
+        "assets/fotos/obras/obra-16.webp",
       ],
     },
-    {
-      name: "Barrio Estilo Sur",
-      illustrative: true,
-      location: "San Juan",
-      type: "Barrio privado",
-      photos: [
-        "https://images.unsplash.com/photo-1486325212027-8081e485255e?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1560472355-536de3962603?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1573804633927-bfcbcd909acd?w=1200&h=750&fit=crop&auto=format",
-      ],
-    },
-    {
-      name: "Pulmho Truck",
-      illustrative: true,
-      location: "San Juan",
-      type: "Playa de camiones",
-      photos: [
-        "https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=750&fit=crop&auto=format",
-      ],
-    },
-    {
-      name: "Swiss Medical",
-      illustrative: true,
-      location: "San Juan",
-      type: "Centro médico",
-      photos: [
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1582139329536-e7284fece509?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1560472355-536de3962603?w=1200&h=750&fit=crop&auto=format",
-      ],
-    },
-    {
-      name: "Auditorio Juan Victoria",
-      illustrative: true,
-      location: "San Juan",
-      type: "Espacio cultural",
-      photos: [
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=750&fit=crop&auto=format",
-      ],
-    },
-    {
-      name: "Fenicia Neumáticos",
-      illustrative: true,
-      location: "San Juan",
-      type: "Comercio automotriz",
-      photos: [
-        "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1200&h=750&fit=crop&auto=format",
-        "https://images.unsplash.com/photo-1582139329536-e7284fece509?w=1200&h=750&fit=crop&auto=format",
-      ],
-    },    { name: "Bodegas Jaled", type: "Cerco eléctrico", location: "San Juan", photos: ["assets/fotos/bodegas-jaled-luces-local.png", "assets/fotos/bodegas-jaled-2.jpeg"] },
-    { name: "Casas residenciales", type: "Cercos eléctricos", location: "San Juan", photos: ["assets/fotos/residencial-cartel-local.png", "assets/fotos/obra-3.webp", "assets/fotos/obra-4.webp", "assets/fotos/obra-5.webp", "assets/fotos/residencial-piso-local.png"] },
   ];
-
-  // Foto de portada de cada tarjeta de la grilla (mismo orden que OBRAS)
-  const CARD_GRID_PHOTOS = OBRAS.map((o) => o.photos[0]);
 
   /* ==========================================================================
      2) MENÚ MOBILE
@@ -114,13 +67,15 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==========================================================================
      3) ACORDEÓN DE SERVICIOS — solo uno abierto a la vez
      ========================================================================== */
-  const accordionItems = document.querySelectorAll("#accordion .accordion__item");
-  accordionItems.forEach((item) => {
-    const trigger = item.querySelector(".accordion__trigger");
-    trigger.addEventListener("click", () => {
-      const wasOpen = item.classList.contains("is-open");
-      accordionItems.forEach((i) => i.classList.remove("is-open"));
-      if (!wasOpen) item.classList.add("is-open");
+  ["#accordion", "#faq"].forEach((sel) => {
+    const accordionItems = document.querySelectorAll(sel + " .accordion__item");
+    accordionItems.forEach((item) => {
+      const trigger = item.querySelector(".accordion__trigger");
+      trigger.addEventListener("click", () => {
+        const wasOpen = item.classList.contains("is-open");
+        accordionItems.forEach((i) => i.classList.remove("is-open"));
+        if (!wasOpen) item.classList.add("is-open");
+      });
     });
   });
 
@@ -129,21 +84,68 @@ document.addEventListener("DOMContentLoaded", () => {
      ========================================================================== */
   const obrasGrid = document.getElementById("obrasGrid");
 
+  // Una diapositiva por foto; al tocarla se abre la galería en esa obra y esa foto.
   OBRAS.forEach((obra, i) => {
-    const card = document.createElement("div");
-    card.className = "obra-card" + (i === 0 ? " obra-card--tall" : "");
-    card.innerHTML = `
-      <img src="${CARD_GRID_PHOTOS[i]}" alt="${obra.name}">
-      <div class="obra-card__scrim"></div>
-      <div class="obra-card__info">
-        <p class="name">${obra.name}</p>
-        ${obra.illustrative ? `<small>Imagen ilustrativa</small>` : ""}
-        ${obra.type ? `<p class="loc">${obra.location ? `${obra.type} · ${obra.location}` : obra.type}</p>` : ""}
-      </div>
-    `;
-    card.addEventListener("click", () => openLightbox(i));
-    obrasGrid.appendChild(card);
+    obra.photos.forEach((photo, j) => {
+      const card = document.createElement("div");
+      card.className = "obra-card";
+      card.innerHTML = `
+        <img src="${photo}" alt="Instalación de cerco eléctrico FERMAX" loading="lazy" draggable="false">
+      `;
+      card.addEventListener("click", () => { if (!dragMoved) openLightbox(i, j); });
+      obrasGrid.appendChild(card);
+    });
   });
+
+  // Arrastrar con el mouse (el dedo ya desliza solo). dragMoved evita abrir la
+  // galería cuando se soltó después de arrastrar.
+  let dragMoved = false;
+  let dragStartX = 0;
+  let dragStartScroll = 0;
+  let dragging = false;
+  obrasGrid.addEventListener("pointerdown", (e) => {
+    if (e.pointerType !== "mouse" || e.button !== 0) return;
+    dragging = true;
+    dragMoved = false;
+    dragStartX = e.clientX;
+    dragStartScroll = obrasGrid.scrollLeft;
+  });
+  window.addEventListener("pointermove", (e) => {
+    if (!dragging) return;
+    const dx = e.clientX - dragStartX;
+    if (!dragMoved && Math.abs(dx) > 5) {
+      dragMoved = true;
+      obrasGrid.classList.add("is-dragging");
+    }
+    if (dragMoved) obrasGrid.scrollLeft = dragStartScroll - dx;
+  });
+  function endDrag() {
+    if (!dragging) return;
+    dragging = false;
+    obrasGrid.classList.remove("is-dragging");
+    // dejar dragMoved activo hasta después del click que sigue al soltar
+    setTimeout(() => { dragMoved = false; }, 0);
+  }
+  window.addEventListener("pointerup", endDrag);
+  window.addEventListener("pointercancel", endDrag);
+
+  // Flechas del carrusel: avanzan una diapositiva
+  const obrasPrev = document.getElementById("obrasPrev");
+  const obrasNext = document.getElementById("obrasNext");
+  const slideStep = () => {
+    const first = obrasGrid.querySelector(".obra-card");
+    return first ? first.getBoundingClientRect().width + 12 : 320;
+  };
+  obrasPrev.addEventListener("click", () => obrasGrid.scrollBy({ left: -slideStep(), behavior: "smooth" }));
+  obrasNext.addEventListener("click", () => obrasGrid.scrollBy({ left: slideStep(), behavior: "smooth" }));
+  function updateObrasArrows() {
+    const max = obrasGrid.scrollWidth - obrasGrid.clientWidth - 2;
+    obrasPrev.disabled = obrasGrid.scrollLeft <= 2;
+    obrasNext.disabled = obrasGrid.scrollLeft >= max;
+  }
+  obrasGrid.addEventListener("scroll", updateObrasArrows, { passive: true });
+  window.addEventListener("resize", updateObrasArrows);
+  updateObrasArrows();
 
   // --- Lightbox ---
   const lightbox = document.getElementById("lightbox");
@@ -162,9 +164,9 @@ document.addEventListener("DOMContentLoaded", () => {
   let projectIdx = 0;
   let photoIdx = 0;
 
-  function openLightbox(index) {
+  function openLightbox(index, photo = 0) {
     projectIdx = index;
-    photoIdx = 0;
+    photoIdx = photo;
     renderLightbox();
     lightbox.hidden = false;
     document.body.style.overflow = "hidden";
@@ -177,10 +179,8 @@ document.addEventListener("DOMContentLoaded", () => {
     const obra = OBRAS[projectIdx];
 
     lightboxPhoto.src = obra.photos[photoIdx];
-    lightboxPhoto.alt = obra.name;
-    lightboxCaption.textContent = obra.photos.length > 1 ? `${obra.name} — foto ${photoIdx + 1} de ${obra.photos.length}` : obra.name;
-
-    if (obra.illustrative) lightboxCaption.textContent += " · Imagen ilustrativa";
+    lightboxPhoto.alt = "Instalación de cerco eléctrico FERMAX";
+    lightboxCaption.textContent = `Foto ${photoIdx + 1} de ${obra.photos.length}`;
 
     lightboxThumbs.innerHTML = "";
     obra.photos.forEach((photo, j) => {
@@ -193,9 +193,13 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     lightboxType.textContent = obra.type ? (obra.location ? `${obra.type} · ${obra.location}` : obra.type) : "";
-    lightboxName.textContent = obra.name;
-
-    lightboxCounter.textContent = `Obra ${projectIdx + 1} de ${OBRAS.length}`;
+    lightboxName.textContent = obra.name || "";
+    lightboxCounter.textContent = OBRAS.length > 1 ? `Obra ${projectIdx + 1} de ${OBRAS.length}` : "";
+    lightboxPrevProject.hidden = lightboxNextProject.hidden = OBRAS.length < 2;
+    // Sin nombre ni tipo, el panel de detalles queda vacío: se oculta y la foto ocupa todo
+    const noDetails = !obra.name && !obra.type;
+    document.querySelector(".lightbox__details").hidden = noDetails;
+    document.querySelector(".lightbox__grid").classList.toggle("lightbox__grid--solo", noDetails);
 
     const single = obra.photos.length < 2;
     lightboxThumbs.hidden = single;
@@ -280,6 +284,7 @@ document.addEventListener("DOMContentLoaded", () => {
   /* ==========================================================================
      6) FORMULARIO DE CONTACTO
      ========================================================================== */
+  const WHATSAPP_NUMBER = "5492645242923";
   const contactForm = document.getElementById("contactForm");
   const formSuccess = document.getElementById("formSuccess");
   const formReset = document.getElementById("formReset");
@@ -301,12 +306,22 @@ document.addEventListener("DOMContentLoaded", () => {
     if (!localidad) { showError("localidad", "Indicá tu localidad."); hasErrors = true; }
     if (hasErrors) return;
 
-    // ------------------------------------------------------------------------
-    // Acá no hay backend: el formulario solo valida y muestra el mensaje de
-    // éxito. Para que las consultas lleguen de verdad hay que conectarlo a
-    // algo (por ejemplo un endpoint propio, o armar un link de WhatsApp con
-    // los datos cargados). Avisale a Juan si querés que esto quede funcional.
-    // ------------------------------------------------------------------------
+    // Sin servidor propio: la consulta se manda por WhatsApp con los datos ya
+    // escritos. La persona solo toca "enviar" en WhatsApp.
+    const lineas = ["Hola, quiero pedir un presupuesto."];
+    lineas.push(`Nombre: ${nombre}`);
+    lineas.push(`Teléfono: ${telefono}`);
+    lineas.push(`Localidad: ${localidad}`);
+    const email = contactForm.email.value.trim();
+    const tipo = contactForm.tipo.value;
+    const mensaje = contactForm.mensaje.value.trim();
+    if (email) lineas.push(`Email: ${email}`);
+    if (tipo) lineas.push(`Servicio: ${tipo}`);
+    if (mensaje) lineas.push(`Mensaje: ${mensaje}`);
+    const waUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(lineas.join("\n"))}`;
+
+    document.getElementById("formWaLink").href = waUrl;
+    window.open(waUrl, "_blank", "noopener");
 
     contactForm.hidden = true;
     formSuccess.hidden = false;

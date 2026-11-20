@@ -43,11 +43,12 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,300;0,400;0,500;0,700;1,400&display=swap" rel="stylesheet">
-<link href="https://fonts.cdnfonts.com/css/sansation" rel="stylesheet">
+
 
 <!-- El ?v= obliga al navegador a bajar la versión nueva en vez de la guardada
      en caché. Subir el número cada vez que se toca styles.css o main.js. -->
-<link rel="stylesheet" href="styles.css?v=17">
+<link href="https://fonts.cdnfonts.com/css/sansation" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=22">
 <!-- Marca que hay JS antes de pintar, para que las animaciones de scroll no parpadeen -->
 <script>document.documentElement.classList.add("js");</script>
 </head>
@@ -229,7 +230,7 @@
           <div class="accordion__panel-inner">
             <div class="accordion__text">
               <p>Detección temprana de incendios y sistemas de alerta para hogares y empresas.</p>            </div>
-            <div class="accordion__photo"><img src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=900&h=500&fit=crop&auto=format" alt="Sistemas contra incendios"></div>
+            <div class="accordion__photo"><img src="assets/fotos/svc-incendios.webp" alt="Central de incendio, pulsador y extintor" loading="lazy"></div>
           </div>
         </div>
       </div>
@@ -312,6 +313,8 @@
       <span class="clients__item">Empresa Notar</span>
       <span class="clients__item">Shell Caucete</span>
       <span class="clients__item">Empresa Yoel</span>
+      <span class="clients__item">Pulmho Truck</span>
+      <span class="clients__item">Swiss Medical</span>
     </div>
   </div>
 </section>
@@ -327,7 +330,13 @@
       <h2>Proyectos <span class="text-yellow">ejecutados</span></h2>
       <p class="section__sub">Algunos de nuestros trabajos.</p>
     </div>
-    <div class="obras__grid" id="obrasGrid"><!-- generado por main.js --></div>
+    <div class="obras__carousel">
+      <div class="obras__grid" id="obrasGrid" tabindex="0" aria-label="Galería de obras"><!-- generado por main.js --></div>
+      <div class="obras__arrows">
+        <button type="button" id="obrasPrev" aria-label="Anterior">‹</button>
+        <button type="button" id="obrasNext" aria-label="Siguiente">›</button>
+      </div>
+    </div>
   </div>
 
   <!-- Lightbox (oculto por defecto, se activa con JS) -->
@@ -400,6 +409,9 @@
           <li>Empresa Notar</li>
           <li>Empresa Yoel</li>
           <li>Bodegas Jaled</li>
+          <li>Pulmho Truck</li>
+          <li>Swiss Medical</li>
+          <li>Auditorio Juan Victoria</li>
           <li>Estación de servicio Shell Caucete</li>
         </ul>
       </div>
@@ -529,18 +541,94 @@
 <!-- ==========================================================================
      CTA FINAL
      ========================================================================== -->
-<!-- Espacios preparados: completar con testimonios autorizados y respuestas confirmadas. -->
-<section id="testimonios" class="section section--white">
+<!-- Testimonios: sección quitada por ahora (sin reseñas autorizadas). -->
+<!-- FAQ: sin plazos, garantía ni cuotas hasta que el cliente los confirme. -->
+<section id="preguntas-frecuentes" class="section section--white">
   <div class="container">
-    <div class="section__head"><h2>Lo que dicen <span class="text-yellow">nuestros clientes</span></h2></div>
-    <div class="content-pending"><p>Próximamente compartiremos testimonios de nuestros clientes.</p></div>
-  </div>
-</section>
-<section id="preguntas-frecuentes" class="section section--gray">
-  <div class="container">
-    <div class="section__head"><h2>Preguntas <span class="text-yellow">frecuentes</span></h2></div>
-    <div class="content-pending"><p>Estamos preparando las respuestas sobre instalación, mantenimiento, garantía y servicio posterior.</p></div>
-    <!-- Temas pendientes de confirmar: presupuesto, plazos de instalación, cortes de luz, mantenimiento, alcance y duración de garantía, asistencia después de instalar. No publicar condiciones sin confirmar. -->
+    <div class="section__head"><h2>Preguntas <span class="text-yellow">frecuentes</span></h2><p class="section__sub">Sobre cercos eléctricos.</p></div>
+    <div class="accordion faq" id="faq">
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">01</span><span class="accordion__title">¿Es peligroso? ¿Puede matar a alguien?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>No. Emite pulsos de alto voltaje pero de muy bajo amperaje y energía limitada. La descarga es fuerte y disuasiva, pero no letal.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">02</span><span class="accordion__title">¿Qué pasa si lo toca un chico o una mascota?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Siente un golpe desagradable y se aleja. Los pulsos son intermitentes, lo que permite soltarse. Además se instala en altura, fuera del alcance del público.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">03</span><span class="accordion__title">¿Es legal? ¿Necesito algún permiso?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Es legal siempre que cumpla las normas de seguridad eléctrica. Algunos municipios tienen ordenanzas propias, así que conviene consultar en el tuyo. Te asesoramos en la visita técnica.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">04</span><span class="accordion__title">¿Cómo funciona?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Un energizador envía pulsos eléctricos por los hilos. Si alguien corta un cable o lo pone a tierra, se activa la alarma.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">05</span><span class="accordion__title">¿Qué pasa si se corta la luz?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Los equipos tienen batería de respaldo que lo mantiene funcionando.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">06</span><span class="accordion__title">¿Gasta mucha electricidad?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Muy poca, similar a una lamparita de bajo consumo.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">07</span><span class="accordion__title">¿Funciona con lluvia?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Sí. Una instalación correcta funciona con lluvia y humedad.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">08</span><span class="accordion__title">¿Suena una alarma? ¿Me avisa al celular?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Tiene sirena propia y puede conectarse a la alarma de la casa, a un servicio de monitoreo o a una app.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">09</span><span class="accordion__title">¿Se puede poner sobre cualquier muro o reja?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Casi siempre. Usamos soportes rectos, en ángulo o en "L" según el caso.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">10</span><span class="accordion__title">¿Interfiere con la TV, el wifi o el portón eléctrico?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>No, si está bien instalado y con una correcta puesta a tierra.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">11</span><span class="accordion__title">¿Las plantas o enredaderas pueden afectarlo?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Sí. Si tocan los hilos generan pérdida de potencia y falsas alarmas, por eso hay que mantenerlas podadas.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">12</span><span class="accordion__title">¿Cuánto sale?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Depende de los metros a cubrir y del equipo. La visita técnica y el presupuesto son sin cargo.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">13</span><span class="accordion__title">¿Hacen mantenimiento?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Sí, con revisiones periódicas y asistencia ante fallas.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">14</span><span class="accordion__title">¿Se puede ampliar después?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Sí, se pueden agregar metros o zonas.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">15</span><span class="accordion__title">¿Es mejor que la concertina o los pinchos?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>El cerco eléctrico suma alarma y tiene una estética más prolija. La concertina es más barata, pero es solo una barrera física.</p></div></div></div>
+      </div>
+
+      <div class="accordion__item">
+        <button class="accordion__trigger" type="button"><span class="accordion__left"><span class="accordion__num">16</span><span class="accordion__title">¿Sirve si ya tengo alarma o cámaras?</span></span><span class="accordion__icon"></span></button>
+        <div class="accordion__panel"><div class="accordion__panel-inner"><div class="accordion__text"><p>Sí. Funciona como primera barrera en el perímetro y se integra con ambos sistemas.</p></div></div></div>
+      </div>
+
+    </div>
   </div>
 </section>
 
@@ -620,9 +708,10 @@
         <!-- Mensaje de éxito, oculto hasta que se envía el formulario -->
         <div class="form-success" id="formSuccess" hidden>
           <div class="form-success__icon">✓</div>
-          <h3>Recibimos tu consulta</h3>
-          <p>Te vamos a contactar a la brevedad. Si preferís, también podés escribirnos por WhatsApp.</p>
-          <button type="button" class="link-reset" id="formReset">Enviar otra consulta</button>
+          <h3>Ya casi está</h3>
+          <p>Se abrió WhatsApp con tu consulta. Tocá <strong>enviar</strong> para que nos llegue. Si no se abrió, usá el botón.</p>
+          <a class="btn btn--yellow" id="formWaLink" href="https://wa.me/5492645242923" target="_blank" rel="noopener noreferrer">Abrir WhatsApp</a>
+          <button type="button" class="link-reset" id="formReset">Hacer otra consulta</button>
         </div>
       </div>
 
@@ -695,7 +784,6 @@
           <li><a href="#obras">Proyectos</a></li>
           <li><a href="#referencias">Referencias</a></li>
           <li><a href="#cobertura">Cobertura</a></li>
-          <li><a href="#testimonios">Testimonios</a></li>
           <li><a href="#preguntas-frecuentes">Preguntas frecuentes</a></li>
           <li><a href="#contacto">Contacto</a></li>
         </ul>
@@ -709,6 +797,6 @@
   </div>
 </footer>
 
-<script src="main.js?v=10"></script>
+<script src="main.js?v=16"></script>
 </body>
 </html>
