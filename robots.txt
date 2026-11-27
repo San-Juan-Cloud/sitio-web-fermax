@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fermaxarg.ar/sitemap.xml
+Sitemap: https://fermaxarg.com.ar/sitemap.xml
